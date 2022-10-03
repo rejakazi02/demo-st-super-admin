@@ -88,9 +88,11 @@ import {
   cilUserFemale,
   cilUserFollow,
   cilUserUnfollow,
+  cilLibraryBuilding,
 } from '@coreui/icons';
 
 export const iconSubset = {
+  cilLibraryBuilding,
   cibCcAmex,
   cibCcApplePay,
   cibCcMastercard,

@@ -47,7 +47,7 @@ const routes: Routes = [
         path: 'cards',
         component: CardsComponent,
         data: {
-          title: 'Cards',
+          title: 'Cardsss',
         },
       },
       {
