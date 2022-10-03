@@ -17,18 +17,18 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-library-building' },
     children: [
       {
-        name: 'Accordion',
+        name: 'Institute Lists',
         url: '/base/accordion'
       },
       {
-        name: 'Breadcrumbs',
+        name: 'Add Institute',
         url: '/base/breadcrumbs'
       },
 
-      {
-        name: 'Tables',
-        url: '/base/tables'
-      },
+      // {
+      //   name: 'Tables',
+      //   url: '/base/tables'
+      // },
 
     ]
   },

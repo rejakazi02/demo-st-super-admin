@@ -21,7 +21,7 @@ const routes: Routes = [
   {
     path: '',
     data: {
-      title: 'Base',
+      title: 'Institute',
     },
     children: [
       {
@@ -33,14 +33,14 @@ const routes: Routes = [
         path: 'accordion',
         component: AccordionsComponent,
         data: {
-          title: 'Accordion',
+          title: 'Institute Lists',
         },
       },
       {
         path: 'breadcrumbs',
         component: BreadcrumbsComponent,
         data: {
-          title: 'Breadcrumbs',
+          title: 'Add Institute',
         },
       },
       {
