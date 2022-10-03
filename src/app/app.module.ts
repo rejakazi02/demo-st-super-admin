@@ -3,6 +3,8 @@ import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@a
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatIconModule} from '@angular/material/icon';
+
 
 import {
   PERFECT_SCROLLBAR_CONFIG,
@@ -42,6 +44,8 @@ import {
   SidebarModule,
   TabsModule,
   UtilitiesModule,
+ 
+
 } from '@coreui/angular';
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
@@ -85,6 +89,8 @@ const APP_CONTAINERS = [
     BadgeModule,
     ListGroupModule,
     CardModule,
+    MatIconModule,
+   
   ],
   providers: [
     {
