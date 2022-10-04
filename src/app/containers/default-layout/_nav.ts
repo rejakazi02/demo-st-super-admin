@@ -18,7 +18,7 @@ export const navItems: INavData[] = [
     children: [
       {
         name: 'Institute Lists',
-        url: '/base/accordion'
+        url: '/base/instList'
       },
       {
         name: 'Add Institute',

@@ -52,6 +52,11 @@ import { TabsComponent } from './tabs/tabs.component';
 
 // Components Routing
 import { BaseRoutingModule } from './base-routing.module';
+import { InstituteListComponent } from './institute-list/institute-list.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   imports: [
@@ -83,6 +88,12 @@ import { BaseRoutingModule } from './base-routing.module';
     PopoverModule,
     TableModule,
     DocsComponentsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
+    MatIconModule,
+
+
   ],
   declarations: [
     AccordionsComponent,
@@ -100,6 +111,7 @@ import { BaseRoutingModule } from './base-routing.module';
     TooltipsComponent,
     TabsComponent,
     PlaceholdersComponent,
+    InstituteListComponent,
   ],
 })
 export class BaseModule {}
