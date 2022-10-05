@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
         .subscribe((result) => {
           if (result != null) {
             this.responceData = result;
+            localStorage.setItem('token',this.responceData.jwtToken);
             this.route.navigate(['/', 'dashboard']);
             // console.log(result);
             alert('Login Successfull');

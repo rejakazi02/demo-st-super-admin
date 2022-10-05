@@ -18,4 +18,9 @@ proceedLogin(usercred: any){
 return this.http.post<any>(apiurl, usercred)
 }
 
+IsLoggedIn(){
+  return localStorage.getItem('token')!=null;
+}
+
+
 }
