@@ -3,7 +3,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 // import { AuthService } from './../../service/auth.service';
 // import value from './../../../declarations.d';
 import { Router } from '@angular/router';
-import { AuthService } from './../auth.service';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'app-login',
