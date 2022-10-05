@@ -12,7 +12,7 @@ import { AuthService } from '../../service/auth.service';
 })
 export class LoginComponent implements OnInit {
   responceData: any;
-logInForm!: FormGroup;
+  logInForm!: FormGroup;
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
@@ -24,23 +24,21 @@ logInForm!: FormGroup;
       email: ['', [Validators.email, Validators.required]],
       password: ['', Validators.required],
     });
-
-
   }
 
-
-
   logIn() {
-    console.log(this.logInForm.value);
-    if(this.logInForm.valid){
-      this.authService.proceedLogin(this.logInForm.value).subscribe((result) => {
-
-        if(result != null){
-          this.responceData = result;
-          this.route.navigate(['/','dashboard'])
-console.log(result);
-        }
-      });
+    // console.log(this.logInForm.value);
+    if (this.logInForm.valid) {
+      this.authService
+        .proceedLogin(this.logInForm.value)
+        .subscribe((result) => {
+          if (result != null) {
+            this.responceData = result;
+            this.route.navigate(['/', 'dashboard']);
+            // console.log(result);
+            alert('Login Successfull');
+          }
+        });
     }
   }
 }
