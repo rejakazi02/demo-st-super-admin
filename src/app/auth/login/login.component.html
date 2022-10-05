@@ -5,30 +5,26 @@
         <c-card-group>
           <c-card class="p-4">
             <c-card-body>
-              <form [formGroup]="loginForm" (ngSubmit)="logIn()">
+              <form [formGroup]="logInForm" (ngSubmit)="logIn()">
                 <h1>Login</h1>
                 <p class="text-medium-emphasis">Sign In to your account</p>
                 <c-input-group class="mb-3">
                   <span cInputGroupText>
                     <svg cIcon name="cilUser"></svg>
                   </span>
-                  <input autoComplete="username" cFormControl placeholder="Username" />
+                  <input formControlName="email"  type="email" placeholder="Enter your email" />
                 </c-input-group>
                 <c-input-group class="mb-4">
                   <span cInputGroupText>
                     <svg cIcon name="cilLockLocked"></svg>
                   </span>
-                  <input
-                    autoComplete="current-password"
-                    cFormControl
-                    placeholder="Password"
-                    type="password"
-                  />
+                  <input formControlName="password"  type="password" placeholder="Enter your password" />
                 </c-input-group>
                 <c-row>
                   <c-col xs="6">
                     <button cButton class="px-4" color="primary"  type="submit">
-                    <a class="Login" routerLink="/dashboard">Login</a>
+                    <!-- <a class="Login" routerLink="/dashboard">Login</a> -->
+                    Login
                     </button>
                   </c-col>
                   <c-col class="text-right" xs="6">

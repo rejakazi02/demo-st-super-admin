@@ -1,26 +1,46 @@
-import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+// import { AuthService } from './../../service/auth.service';
+// import value from './../../../declarations.d';
+import { Router } from '@angular/router';
+import { AuthService } from './../auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+  responceData: any;
+logInForm!: FormGroup;
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private route: Router
+  ) {}
+  ngOnInit(): void {
+    // throw new Error('Method not implemented.');
+    this.logInForm = this.fb.group({
+      email: ['', [Validators.email, Validators.required]],
+      password: ['', Validators.required],
+    });
+
+
+  }
 
 
 
-  constructor(private fb: FormBuilder,) { }
+  logIn() {
+    console.log(this.logInForm.value);
+    if(this.logInForm.valid){
+      this.authService.proceedLogin(this.logInForm.value).subscribe((result) => {
 
-  loginForm: any = this.fb.group({
-    email: ['', [Validators.email, Validators.required]],
-    password: ['', Validators.required],
-  });
-
-logIn(){
-  console.log(this.loginForm.value)
-}
-
-
+        if(result != null){
+          this.responceData = result;
+          this.route.navigate(['/','dashboard'])
+console.log(result);
+        }
+      });
+    }
+  }
 }
