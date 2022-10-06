@@ -63,6 +63,11 @@ const childrenRoutes: Routes = [
     loadChildren: () =>
       import('./views/pages/pages.module').then((m) => m.PagesModule)
   },
+  {
+    path: 'profile',
+    loadChildren: () =>
+      import('./containers/default-layout/profile/profile.module').then((m) => m.ProfileModule)
+  },
 ]
 
 
