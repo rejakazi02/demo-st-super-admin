@@ -28,7 +28,7 @@ IsLoggedIn(){
 
 
 logOut(): void {
-  localStorage.removeItem('loginTime');
+  localStorage.removeItem('token');
   // this.tokenService.removeAccessToken();
   // this.tokenService.removeRefreshToken();
   setTimeout(() => {

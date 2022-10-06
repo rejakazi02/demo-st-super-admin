@@ -12,10 +12,13 @@ constructor(private authService: AuthService, private rout: Router){}
 
   canActivate() {
       if(this.authService.IsLoggedIn()){
+       
         return true;
       }
       else{
-        this.rout.navigate(['/','auth/login']);
+
+
+        this.rout.navigate(['/auth/login']);
         return false;
       }
 
