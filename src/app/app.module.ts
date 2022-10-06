@@ -52,6 +52,7 @@ import {
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { ProfileComponent } from './containers/default-layout/profile/profile.component';
+import { FormsModule } from '@angular/forms';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -94,6 +95,8 @@ const APP_CONTAINERS = [
     CardModule,
     MatIconModule,
     HttpClientModule,
+    FormsModule,
+
   ],
   providers: [
     {
