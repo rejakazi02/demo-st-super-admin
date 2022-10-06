@@ -55,3 +55,58 @@ section {
     }
   }
 }
+
+
+
+
+
+// media quey section
+
+
+@media (max-width:600px)  {
+
+  section {
+    h1 {
+
+      text-align: center;
+
+    }
+    .profile-main-div {
+
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    place-items: center;
+    padding: 5% 0;
+
+
+      .profile-img-div {
+        img {
+        }
+      }
+
+      .profile-update-div {
+
+        form {
+          .form-div {
+          align-items: center;
+            gap: 20px;
+
+            input {
+              width: 48vw;
+              height: 50px;
+              padding-left: 10px;
+              font-weight: 500;
+              font-size: 12px;
+            }
+            button {
+
+              font-size: 15px;
+
+            }
+          }
+        }
+      }
+    }
+  }
+}
