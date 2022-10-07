@@ -56,29 +56,19 @@ section {
   }
 }
 
-
-
-
-
 // media quey section
 
-
-@media (max-width:600px)  {
-
+@media (max-width: 600px) {
   section {
     h1 {
-
       text-align: center;
-
     }
     .profile-main-div {
-
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 30px;
-    place-items: center;
-    padding: 5% 0;
-
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+      place-items: center;
+      padding: 5% 0;
 
       .profile-img-div {
         img {
@@ -86,10 +76,9 @@ section {
       }
 
       .profile-update-div {
-
         form {
           .form-div {
-          align-items: center;
+            align-items: center;
             gap: 20px;
 
             input {
@@ -100,9 +89,7 @@ section {
               font-size: 14px;
             }
             button {
-
               font-size: 15px;
-
             }
           }
         }
