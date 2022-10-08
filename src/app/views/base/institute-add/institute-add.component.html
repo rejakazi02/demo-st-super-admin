@@ -6,10 +6,10 @@
       <c-card-body>
 
 
-        <form cForm class="row g-3">
+        <form cForm class="row g-3" [formGroup]="institutPost" (ngSubmit)="intSubmit()">
           <c-col xs="12">
             <label cLabel for="inputAddress">Institute Name</label>
-            <input cFormControl id="inputInstituteName" placeholder="Institute Name" />
+            <input formControlName="institutename" cFormControl id="inputInstituteName" placeholder="Institute Name" />
           </c-col>
 
           <!-- <c-col xs="12">
@@ -19,7 +19,7 @@
 
           <c-col md="6">
             <label cLabel for="inputState">Institute Category</label>
-            <select cSelect id="inputState">
+            <select formControlName="instituteCat" cSelect id="inputState">
               <option>Choose...</option>
               <option>Primary school</option>
               <option>High school</option>
@@ -32,7 +32,7 @@
             <label cLabel for="inputState">Institute sub type</label>
             <mat-form-field appearance="fill" cSelect id="inputState">
               <mat-label>Choose...</mat-label>
-              <mat-select for [formControl]="toppings" multiple>
+              <mat-select formControlName="instituteSubCat" for [formControl]="toppings" multiple>
                 <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
               </mat-select>
             </mat-form-field>
@@ -40,7 +40,7 @@
 
           <c-col md="6">
             <label cLabel for="inputState">Institute Type</label>
-            <select cSelect id="inputState">
+            <select formControlName="instituteType" cSelect id="inputState">
               <option>Choose...</option>
               <option>Government</option>
               <option>Private</option>
@@ -50,7 +50,7 @@
 
           <c-col md="6">
             <label cLabel for="inputState">Union Name</label>
-            <select cSelect id="inputState">
+            <select formControlName="unionName" cSelect id="inputState">
               <option>Choose...</option>
               <option>Union 1</option>
               <option>Union 2</option>
@@ -69,15 +69,15 @@
 
           <c-col md="6">
             <label cLabel for="inputEmail4">Email</label>
-            <input cFormControl id="inputEmail4" type="email" />
+            <input formControlName="email" cFormControl id="inputEmail4" type="email" />
           </c-col>
           <c-col md="6">
             <label cLabel for="inputPassword4">Password</label>
-            <input cFormControl id="inputPassword4" type="password" />
+            <input formControlName="password" cFormControl id="inputPassword4" type="password" />
           </c-col>
           <c-col md="6">
             <label cLabel for="inputPassword4">Phone Number</label>
-            <input cFormControl id="inputPassword4" type="number" />
+            <input formControlName="phoneNumber" cFormControl id="inputPassword4" type="text" placeholder="Phone Number" />
           </c-col>
 
           <!-- <c-col md="2">

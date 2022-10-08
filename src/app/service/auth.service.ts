@@ -8,7 +8,7 @@ const apiurl='https://api.omegaitsys.com/api/v1/admin/login';
 
 @Injectable({
   providedIn: 'root'
-})
+})  
 
 export class AuthService {
 
