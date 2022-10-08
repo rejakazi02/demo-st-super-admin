@@ -28,15 +28,14 @@
               <option>Dakhil Madrasa</option>
             </select>
           </c-col>
-          <c-col md="6">
-            <label cLabel for="inputState">State</label>
-            <select cSelect id="inputState">
-              <option>Choose...</option>
-              <option>Primary school</option>
-              <option>High school</option>
-              <option>College</option>
-
-            </select>
+          <c-col md="6" class="test">
+            <label cLabel for="inputState">Institute sub type</label>
+            <mat-form-field appearance="fill" cSelect id="inputState">
+              <mat-label>Choose...</mat-label>
+              <mat-select for [formControl]="toppings" multiple>
+                <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+              </mat-select>
+            </mat-form-field>
           </c-col>
 
           <c-col md="6">
@@ -150,4 +149,7 @@
 
 
 </c-row>
+
+
+
 

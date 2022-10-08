@@ -45,6 +45,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import { InstituteAddComponent } from './institute-add/institute-add.component';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -81,7 +82,7 @@ import { InstituteAddComponent } from './institute-add/institute-add.component';
     MatPaginatorModule,
     MatFormFieldModule,
     MatIconModule,
-
+    MatSelectModule,
 
   ],
   declarations: [
