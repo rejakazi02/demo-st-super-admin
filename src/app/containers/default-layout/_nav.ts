@@ -22,7 +22,7 @@ export const navItems: INavData[] = [
       },
       {
         name: 'Add Institute',
-        url: '/base/breadcrumbs'
+        url: '/base/instituteAdd'
       },
 
       // {
