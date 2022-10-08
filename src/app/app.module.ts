@@ -54,6 +54,10 @@ import {
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { ProfileComponent } from './containers/default-layout/profile/profile.component';
 import { FormsModule } from '@angular/forms';
+import { NgSelect2Module } from 'ng-select2';
+
+
+
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
