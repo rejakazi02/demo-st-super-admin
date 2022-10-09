@@ -9,7 +9,7 @@ import { TokenService } from './token.service';
 
 
 
-let baseurl= environment.APIURL;
+let baseurl= ' https://api.omegaitsys.com/api/v1/';
 const HTTP_OPTIONS = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
