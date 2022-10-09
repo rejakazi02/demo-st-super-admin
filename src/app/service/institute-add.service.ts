@@ -49,41 +49,52 @@ export class InstituteAddService {
   insttePost(signUpPayload: any): Observable<any> {
     return this.http
       .post(baseurl + 'admin/institutes', signUpPayload, HTTP_OPTIONS)
-      // .pipe(
-      //   tap((_) => InstituteAddService.log('registered!')),
-      //   catchError(this.handleError)
-      // );
-  }
-
-
-
-  refreshToken(refreshTokenData: any): Observable<any> {
-    HTTP_OPTIONS.params = {
-      grant_type: 'refresh_token',
-    };
-    return this.http
-      .post(baseurl + 'admin/login', refreshTokenData, HTTP_OPTIONS)
       .pipe(
-        tap((event: any) => {
-          // Save new Tokens
-          this.tokenService.removeAccessToken();
-          this.tokenService.removeRefreshToken();
-          this.tokenService.saveAccessToken(event.data.access_token);
-          this.tokenService.saveRefreshToken(event.data.refresh_token);
-          // return event;
-        }),
+        tap((_) => InstituteAddService.log('registered!')),
         catchError(this.handleError)
       );
   }
+
+
+
+  // refreshToken(refreshTokenData: any): Observable<any> {
+  //   HTTP_OPTIONS.params = {
+  //     grant_type: 'refresh_token',
+  //   };
+  //   return this.http
+  //     .post(baseurl + 'admin/login', refreshTokenData, HTTP_OPTIONS)
+  //     .pipe(
+  //       tap((event: any) => {
+  //         // Save new Tokens
+  //         this.tokenService.removeAccessToken();
+  //         this.tokenService.removeRefreshToken();
+  //         this.tokenService.saveAccessToken(event.data.access_token);
+  //         this.tokenService.saveRefreshToken(event.data.refresh_token);
+  //         // return event;
+  //       }),
+  //       catchError(this.handleError)
+  //     );
+  // }
 
 
 //   insttePost(inspost:any){
 //  return this.http.post( baseurl +'admin/institutes', inspost)
 //   }
 
-dataget(test:any){
-  return this.http.get(baseurl + 'unions', test)
+unionData(unionname:any){
+  return this.http.get(baseurl + 'unions', unionname)
 }
+
+
+CatData(CatType:any){
+  return this.http.get(baseurl + 'root-categories', CatType)
+}
+
+
+SubCatData(CatType:any){
+  return this.http.get(baseurl + 'root-categories', CatType)
+}
+
 
 
 
