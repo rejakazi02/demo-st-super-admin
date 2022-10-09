@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import { InstituteAddService } from './../../../service/institute-add.service';
 
 export interface PeriodicElement {
   name: string;
@@ -27,4 +28,15 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class InstituteListComponent {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'action'];
   dataSource = ELEMENT_DATA;
+
+constructor(private intService:InstituteAddService){
+
+}
+
+
+
+
+
+
+
 }

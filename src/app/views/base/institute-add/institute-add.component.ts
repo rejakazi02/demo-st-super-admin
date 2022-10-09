@@ -19,16 +19,10 @@ import { Router } from '@angular/router';
 export class InstituteAddComponent implements OnInit {
   responceData: any;
   institutPost!: FormGroup;
+  unionName:any;
 
   toppings = new FormControl('');
-  toppingList: string[] = [
-    'Extra cheese',
-    'Mushroom',
-    'Onion',
-    'Pepperoni',
-    'Sausage',
-    'Tomato',
-  ];
+  toppingList: string[] = ['1 ', '2', '3', '4', '5', '6'];
 
   constructor(
     private instService: InstituteAddService,
@@ -39,30 +33,31 @@ export class InstituteAddComponent implements OnInit {
 
   ngOnInit(): void {
     this.institutPost = this.fb.group({
-
-      institutename: ['', Validators.required],
-      instituteCat: ['', Validators.required],
-      instituteSubCat: ['', Validators.required],
-      instituteType: ['', Validators.required],
-      unionName: ['', Validators.required],
-      email: ['', [Validators.email, Validators.required]],
+      name: ['', Validators.required],
+      eiin: ['', Validators.required],
+      categories_id: ['', Validators.required],
+      type: ['', Validators.required],
+      union_id: ['', Validators.required],
+      user_name: ['', [Validators.email, Validators.required]],
       password: ['', Validators.required],
-      phoneNumber: ['', Validators.required],
+      user_phon: ['', Validators.required],
     });
+
+    this.unionData();
+
   }
 
   intSubmit() {
+    console.log(this.institutPost.value);
     if (this.institutPost.valid) {
-      console.log(this.institutPost.value);
+      // console.log(this.institutPost.value);
       this.instService
         .insttePost(this.institutPost.value)
         .subscribe((result) => {
-
-
-          console.log(this.institutPost.value);
+          console.log(result);
 
           this.responceData = result;
-console.log(this.responceData);
+          console.log(this.responceData);
           // if (result != null) {
           //   this.responceData = result;
 
@@ -73,4 +68,56 @@ console.log(this.responceData);
         });
     }
   }
+
+unionData(){
+  this.instService
+        .dataget(this.institutPost.value)
+        .subscribe((result) => {
+          console.log(result);
+
+          this.unionName = result;
+          console.log(this.unionName);
+
+        });
+}
+
+
+
+instituteData:any[] = [
+  {
+   _id:1,
+   instituteName:'Primary school',
+   instituteCategory:['One','Two'],
+   InstituteSubType:['sub-institute 1','Sub-Institute 2','Sub-Institute 3'],
+  },
+  {
+    _id:2,
+    instituteName:'High school',
+    instituteCategory:['Four','Five'],
+    InstituteSubType:['sub-institute 4','Sub-Institute 5','Sub-Institute 6'],
+
+   },
+   {
+    _id:3,
+    instituteName:' Collage',
+    instituteCategory:['Six','Seven'],
+    InstituteSubType:['sub-institute 6','Sub-Institute 7','Sub-Institute 8'],
+   }
+  ]
+
+subType: any={
+  _id:1,
+  instituteName: ' ',
+  instituteCategory:[],
+  InstituteSubType:[],
+}
+
+getSubType(select: any){
+console.log(select.value);
+this.subType=this.instituteData.filter((value)=>{
+  return value.instituteName===select.value;
+})[0];
+console.log(this.subType)
+}
+
 }
