@@ -33,6 +33,7 @@ export class InstituteAddComponent implements OnInit {
     private route: Router
   ) {}
 
+  
   ngOnInit(): void {
     this.institutPost = this.fb.group({
       name: ['', Validators.required],
