@@ -19,6 +19,7 @@ export class InstituteAddComponent implements OnInit {
   institutPost!: FormGroup;
   unionName: any;
   catagoryData: any;
+  catagoryDataa: any;
   subCatagoryData: any;
 
   toppings = new FormControl('');
@@ -45,7 +46,8 @@ export class InstituteAddComponent implements OnInit {
 
     this.unionData();
     this.cattData();
-    this.SubCatData();
+    // this.SubCatData();
+    
   }
 
   // instiutte create here
@@ -85,18 +87,21 @@ export class InstituteAddComponent implements OnInit {
 
   // catagory code here
   cattData() {
+    // console.log(select.value)
     this.instService.CatData(this.institutPost.value).subscribe((result) => {
       this.catagoryData = result;
       // console.log(this.catagoryData)
     });
   }
   // SubCatagory code here
-  SubCatData() {
-    this.instService.SubCatData(this.institutPost.value).subscribe((result) => {
-      this.subCatagoryData = result;
-      // console.log(this.catagoryData)
-    });
-  }
+  // SubCatData() {
+  //   this.instService.SubCatData(this.institutPost.value).subscribe((result) => {
+  //     this.subCatagoryData = result;
+  //     console.log(this.subCatagoryData)
+      
+  //   });
+    
+  // }
 
   // instituteData:any[] = [
   //   {
@@ -126,12 +131,28 @@ export class InstituteAddComponent implements OnInit {
   //   instituteCategory:[],
   //   InstituteSubType:[],
   // }
+  // subType: any={
+  //   _id:1,
+  //   instituteName: ' ',
+  //   instituteCategory:[],
+  //   InstituteSubType:[],
+  // }
+
+  getSubType(select: any){
+  console.log(select.value);
+  this.instService.SubCatData(this.institutPost.value, select.value).subscribe((result) => {
+    this.subCatagoryData = result;
+    console.log(this.subCatagoryData)
+    
+  });
+  
+  }
 
   // getSubType(select: any){
-  // console.log(select.value);
-  // this.subType=this.instituteData.filter((value)=>{
-  //   return value.instituteName===select.value;
-  // })[0];
-  // console.log(this.subType)
-  // }
+  //   console.log(select.value);
+    // this.subType=this.instituteData.filter((value)=>{
+    //   return value.instituteName===select.value;
+    // })[0];
+    // console.log(this.subType)
+    // }
 }

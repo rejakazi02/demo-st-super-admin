@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from './../../environments/environment';
+import { InstituteAddComponent } from '../views/base/institute-add/institute-add.component';
 
 import {
   HttpClient,
@@ -23,6 +24,8 @@ const HTTP_OPTIONS = {
   providedIn: 'root',
 })
 export class InstituteAddService {
+
+
   constructor(private http: HttpClient, private tokenService: TokenService) {}
 
   private handleError(error: HttpErrorResponse): any {
@@ -79,7 +82,9 @@ export class InstituteAddService {
     return this.http.get(baseurl + 'root-categories', CatType);
   }
 
-  SubCatData(CatType: any) {
-    return this.http.get(baseurl + 'root-categories', CatType);
+  
+  
+  SubCatData(subCatType: any, select:any ) {
+    return this.http.get(baseurl + 'root-sub-categories/'+ select, subCatType);
   }
 }
