@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-
-
 import {
   FormControl,
   FormBuilder,
@@ -19,9 +17,9 @@ import { Router } from '@angular/router';
 export class InstituteAddComponent implements OnInit {
   responceData: any;
   institutPost!: FormGroup;
-  unionName:any;
-  catagoryData:any;
-  subCatagoryData:any;
+  unionName: any;
+  catagoryData: any;
+  subCatagoryData: any;
 
   toppings = new FormControl('');
   toppingList: string[] = ['1 ', '2', '3', '4', '5', '6'];
@@ -33,7 +31,6 @@ export class InstituteAddComponent implements OnInit {
     private route: Router
   ) {}
 
-  
   ngOnInit(): void {
     this.institutPost = this.fb.group({
       name: ['', Validators.required],
@@ -49,8 +46,9 @@ export class InstituteAddComponent implements OnInit {
     this.unionData();
     this.cattData();
     this.SubCatData();
-
   }
+
+  // instiutte create here
 
   intSubmit() {
     console.log(this.institutPost.value);
@@ -74,85 +72,66 @@ export class InstituteAddComponent implements OnInit {
     }
   }
 
-unionData(){
-  this.instService
-        .unionData(this.institutPost.value)
-        .subscribe((result) => {
-          // console.log(result);
+  // union code chere
 
-          this.unionName = result;
-          // console.log(this.unionName);
+  unionData() {
+    this.instService.unionData(this.institutPost.value).subscribe((result) => {
+      // console.log(result);
 
-        });
-}
+      this.unionName = result;
+      // console.log(this.unionName);
+    });
+  }
 
+  // catagory code here
+  cattData() {
+    this.instService.CatData(this.institutPost.value).subscribe((result) => {
+      this.catagoryData = result;
+      // console.log(this.catagoryData)
+    });
+  }
+  // SubCatagory code here
+  SubCatData() {
+    this.instService.SubCatData(this.institutPost.value).subscribe((result) => {
+      this.subCatagoryData = result;
+      // console.log(this.catagoryData)
+    });
+  }
 
+  // instituteData:any[] = [
+  //   {
+  //    _id:1,
+  //    instituteName:'Primary school',
+  //    instituteCategory:['One','Two'],
+  //    InstituteSubType:['sub-institute 1','Sub-Institute 2','Sub-Institute 3'],
+  //   },
+  //   {
+  //     _id:2,
+  //     instituteName:'High school',
+  //     instituteCategory:['Four','Five'],
+  //     InstituteSubType:['sub-institute 4','Sub-Institute 5','Sub-Institute 6'],
 
-cattData(){
-  this.instService.CatData(this.institutPost.value).subscribe((result)=>{
+  //    },
+  //    {
+  //     _id:3,
+  //     instituteName:' Collage',
+  //     instituteCategory:['Six','Seven'],
+  //     InstituteSubType:['sub-institute 6','Sub-Institute 7','Sub-Institute 8'],
+  //    }
+  //   ]
 
-    this.catagoryData = result;
-    // console.log(this.catagoryData)
-  })
-}
-// SubCatData
-SubCatData(){
-  this.instService.SubCatData(this.institutPost.value).subscribe((result)=>{
+  // subType: any={
+  //   _id:1,
+  //   instituteName: ' ',
+  //   instituteCategory:[],
+  //   InstituteSubType:[],
+  // }
 
-    this.subCatagoryData = result;
-    // console.log(this.catagoryData)
-  })
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// instituteData:any[] = [
-//   {
-//    _id:1,
-//    instituteName:'Primary school',
-//    instituteCategory:['One','Two'],
-//    InstituteSubType:['sub-institute 1','Sub-Institute 2','Sub-Institute 3'],
-//   },
-//   {
-//     _id:2,
-//     instituteName:'High school',
-//     instituteCategory:['Four','Five'],
-//     InstituteSubType:['sub-institute 4','Sub-Institute 5','Sub-Institute 6'],
-
-//    },
-//    {
-//     _id:3,
-//     instituteName:' Collage',
-//     instituteCategory:['Six','Seven'],
-//     InstituteSubType:['sub-institute 6','Sub-Institute 7','Sub-Institute 8'],
-//    }
-//   ]
-
-// subType: any={
-//   _id:1,
-//   instituteName: ' ',
-//   instituteCategory:[],
-//   InstituteSubType:[],
-// }
-
-// getSubType(select: any){
-// console.log(select.value);
-// this.subType=this.instituteData.filter((value)=>{
-//   return value.instituteName===select.value;
-// })[0];
-// console.log(this.subType)
-// }
-
+  // getSubType(select: any){
+  // console.log(select.value);
+  // this.subType=this.instituteData.filter((value)=>{
+  //   return value.instituteName===select.value;
+  // })[0];
+  // console.log(this.subType)
+  // }
 }

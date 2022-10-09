@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 import { environment } from './../../environments/environment';
 
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { tap, switchMap } from 'rxjs/operators';
 import { catchError, throwError } from 'rxjs';
 import { TokenService } from './token.service';
 
-
-
-let baseurl= ' https://api.omegaitsys.com/api/v1/';
+let baseurl = ' https://api.omegaitsys.com/api/v1/';
 const HTTP_OPTIONS = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
@@ -17,18 +19,11 @@ const HTTP_OPTIONS = {
   params: {},
 };
 
-
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class InstituteAddService {
-
-
-
-
-  constructor( private http: HttpClient,  private tokenService: TokenService,) { }
-
+  constructor(private http: HttpClient, private tokenService: TokenService) {}
 
   private handleError(error: HttpErrorResponse): any {
     if (error.error instanceof ErrorEvent) {
@@ -44,8 +39,6 @@ export class InstituteAddService {
     console.log(message);
   }
 
-
-
   insttePost(signUpPayload: any): Observable<any> {
     return this.http
       .post(baseurl + 'admin/institutes', signUpPayload, HTTP_OPTIONS)
@@ -54,8 +47,6 @@ export class InstituteAddService {
         catchError(this.handleError)
       );
   }
-
-
 
   // refreshToken(refreshTokenData: any): Observable<any> {
   //   HTTP_OPTIONS.params = {
@@ -76,27 +67,19 @@ export class InstituteAddService {
   //     );
   // }
 
+  //   insttePost(inspost:any){
+  //  return this.http.post( baseurl +'admin/institutes', inspost)
+  //   }
 
-//   insttePost(inspost:any){
-//  return this.http.post( baseurl +'admin/institutes', inspost)
-//   }
+  unionData(unionname: any) {
+    return this.http.get(baseurl + 'unions', unionname);
+  }
 
-unionData(unionname:any){
-  return this.http.get(baseurl + 'unions', unionname)
+  CatData(CatType: any) {
+    return this.http.get(baseurl + 'root-categories', CatType);
+  }
+
+  SubCatData(CatType: any) {
+    return this.http.get(baseurl + 'root-categories', CatType);
+  }
 }
-
-
-CatData(CatType:any){
-  return this.http.get(baseurl + 'root-categories', CatType)
-}
-
-
-SubCatData(CatType:any){
-  return this.http.get(baseurl + 'root-categories', CatType)
-}
-
-
-
-
-}
-
