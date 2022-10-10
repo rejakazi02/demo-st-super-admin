@@ -8,8 +8,8 @@ import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
-import { HttpClientModule } from '@angular/common/http';
-
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {AuthUserInterceptor} from './auth-interceptor/auth-user.interceptor'
 
 import {
   PERFECT_SCROLLBAR_CONFIG,
@@ -112,6 +112,7 @@ const APP_CONTAINERS = [
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
     },
+    {provide: HTTP_INTERCEPTORS, useClass: AuthUserInterceptor, multi: true},
     IconSetService,
     Title,
   ],

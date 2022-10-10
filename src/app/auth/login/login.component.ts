@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
 
             localStorage.setItem('token',this.responceData.access_token);
             this.route.navigate(['/', 'dashboard']);
-            console.log(this.responceData.access_token);
+            console.log('login token',this.responceData.access_token);
             alert('Login Successfull');
           }
         });

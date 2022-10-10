@@ -40,8 +40,9 @@ export class InstituteAddComponent implements OnInit {
       type: ['', Validators.required],
       union_id: ['', Validators.required],
       user_name: ['', [Validators.required]],
-      password: ['', Validators.required],
       user_phon: ['', Validators.required],
+      password: ['', Validators.required],
+      
     });
 
     this.unionData();
