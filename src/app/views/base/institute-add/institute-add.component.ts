@@ -43,7 +43,7 @@ export class InstituteAddComponent implements OnInit {
       type: ['', Validators.required],
       union_id: ['', Validators.required],
       user_name: ['', [Validators.required]],
-      user_phon: ['', Validators.required],
+      user_phone: ['', Validators.required],
       password: ['', Validators.required],
       
     });
@@ -57,13 +57,13 @@ export class InstituteAddComponent implements OnInit {
   // instiutte create here
 
   intSubmit() {
-    this.institutPost.reset();
-    console.log('check data',this.addInstite);
+    // this.institutPost.reset();
+    console.log('check data',this.institutPost.value);
     // if (this.institutPost.invalid) {
     //   console.log(this.institutPost.value);
     //   // alert('Select all field');
     // }
-    this.instService.insttePost(this.addInstite).subscribe((result) => {
+    this.instService.insttePost(this.institutPost.value).subscribe((result) => {
       // console.log(result);
 
       this.responceData = result;

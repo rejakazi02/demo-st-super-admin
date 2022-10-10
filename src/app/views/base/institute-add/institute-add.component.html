@@ -9,7 +9,7 @@
         <form cForm class="row g-3" [formGroup]="institutPost" (ngSubmit)="intSubmit()">
           <c-col xs="12">
             <label cLabel for="inputAddress">Institute Name</label>
-            <input formControlName="name" [(ngModel)]="addInstite.name" cFormControl id="inputInstituteName" placeholder="Institute Name" />
+            <input formControlName="name"  cFormControl id="inputInstituteName" placeholder="Institute Name" />
           </c-col>
 
           <!-- <c-col xs="12">
@@ -44,10 +44,10 @@
             <label cLabel for="2">Institute sub type</label>
             <mat-form-field appearance="fill" cSelect id="inputState21">
               <mat-label>Choose...</mat-label>
-              <mat-select formControlName="categories_id" [(ngModel)]="addInstite.categories_id"  for [formControl]="toppings" multiple>
+              <mat-select formControlName="categories_id"   for [formControl]="toppings" multiple>
                 <!-- <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option> -->
                 <!-- <mat-option>Chose......</mat-option> -->
-                <mat-option *ngFor ="let item of subCatagoryData" [value]="item">{{item.name}}</mat-option>
+                <mat-option *ngFor ="let item of subCatagoryData" value="{{item.id}}">{{item.name}}</mat-option>
                 <!-- <mat-option *ngFor="let item of subType.InstituteSubType" [value]="item">{{item}}</mat-option> -->
               </mat-select>
             </mat-form-field>
@@ -55,7 +55,7 @@
 
           <c-col md="6">
             <label cLabel for="inputState3">Institute Type</label>
-            <select formControlName="type" [(ngModel)]="addInstite.type"  cSelect id="inputState33">
+            <select formControlName="type"  cSelect id="inputState33">
               <option>Choose...</option>
               <option>Government</option>
               <option>Private</option>
@@ -65,9 +65,9 @@
 
           <c-col md="6">
             <label cLabel for="inputState4">Union Name</label>
-            <select formControlName="union_id" [(ngModel)]="addInstite.union_id"  cSelect id="inputState333" >
+            <select formControlName="union_id"   cSelect id="inputState333" >
               <option>Choose...</option>
-              <option *ngFor="let item of unionName.data">{{item.name}}</option>
+              <option *ngFor="let item of unionName.data" value="{{item.id}}">{{item.name}}</option>
 
 
 
@@ -81,19 +81,19 @@
 
           <c-col md="6">
             <label cLabel for="inputEmail4">Email</label>
-            <input formControlName="user_name" [(ngModel)]="addInstite.user_name"  cFormControl id="inputEmail4" type="email" />
+            <input formControlName="user_name"   cFormControl id="inputEmail4" type="email" />
           </c-col>
           <c-col md="6">
             <label cLabel for="inputPassword54">Password</label>
-            <input formControlName="password" [(ngModel)]="addInstite.password"  cFormControl id="inputPassword41" type="password" />
+            <input formControlName="password"   cFormControl id="inputPassword41" type="password" />
           </c-col>
           <c-col md="6">
             <label cLabel for="inputPassword44">Phone Number</label>
-            <input formControlName="user_phon" [(ngModel)]="addInstite.user_phon"  cFormControl id="inputPassword42" type="text" placeholder="Phone Number" />
+            <input formControlName="user_phone"   cFormControl id="inputPassword42" type="number" placeholder="Phone Number" />
           </c-col>
           <c-col md="6">
-            <label cLabel for="inputPassword4">Eiin Number</label>
-            <input formControlName="eiin" [(ngModel)]="addInstite.eiin"  cFormControl id="inputPassword43" type="text" placeholder="Phone Number" />
+            <label cLabel for="inputPassword4">EIIn Number</label>
+            <input formControlName="eiin"   cFormControl id="inputPassword43" type="number" placeholder="EIIn Number" />
           </c-col>
 
           <!-- <c-col md="2">
