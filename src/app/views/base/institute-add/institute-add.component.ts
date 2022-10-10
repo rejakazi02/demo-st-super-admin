@@ -1,3 +1,4 @@
+import { AddInstute } from './../../../models/institute.model';
 import { Component, OnInit } from '@angular/core';
 
 import {
@@ -21,6 +22,8 @@ export class InstituteAddComponent implements OnInit {
   catagoryData: any;
   catagoryDataa: any;
   subCatagoryData: any;
+
+  addInstite=new AddInstute();
 
   toppings = new FormControl('');
   // toppingList: string[] = ['1 ', '2', '3', '4', '5', '6'];
@@ -54,18 +57,19 @@ export class InstituteAddComponent implements OnInit {
   // instiutte create here
 
   intSubmit() {
-    console.log(this.institutPost.value);
+    this.institutPost.reset();
+    console.log('check data',this.addInstite);
     // if (this.institutPost.invalid) {
     //   console.log(this.institutPost.value);
     //   // alert('Select all field');
     // }
-    this.instService.insttePost(this.institutPost.value).subscribe((result) => {
-      console.log(result);
+    this.instService.insttePost(this.addInstite).subscribe((result) => {
+      // console.log(result);
 
       this.responceData = result;
       // localStorage.setItem('token',this.responceData.access_token);
 
-      console.log(this.responceData);
+      console.log('input data',this.responceData);
 
     });
   }
