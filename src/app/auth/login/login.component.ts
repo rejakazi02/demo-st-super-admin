@@ -34,17 +34,17 @@ export class LoginComponent implements OnInit {
         .subscribe((result) => {
           if (result != null) {
             this.responceData = result;
-          
+
             localStorage.setItem('token',this.responceData.access_token);
             this.route.navigate(['/', 'dashboard']);
-            // console.log(result);
+            console.log(this.responceData.access_token);
             alert('Login Successfull');
           }
         });
 
 
 
-        
+
     }
   }
 

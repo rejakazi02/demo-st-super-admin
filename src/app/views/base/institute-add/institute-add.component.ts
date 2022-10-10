@@ -23,7 +23,7 @@ export class InstituteAddComponent implements OnInit {
   subCatagoryData: any;
 
   toppings = new FormControl('');
-  toppingList: string[] = ['1 ', '2', '3', '4', '5', '6'];
+  // toppingList: string[] = ['1 ', '2', '3', '4', '5', '6'];
 
   constructor(
     private instService: InstituteAddService,
@@ -39,7 +39,7 @@ export class InstituteAddComponent implements OnInit {
       categories_id: ['', Validators.required],
       type: ['', Validators.required],
       union_id: ['', Validators.required],
-      user_name: ['', [Validators.email, Validators.required]],
+      user_name: ['', [Validators.required]],
       password: ['', Validators.required],
       user_phon: ['', Validators.required],
     });
@@ -47,50 +47,55 @@ export class InstituteAddComponent implements OnInit {
     this.unionData();
     this.cattData();
     // this.SubCatData();
-    
+    // this.intSubmit();
   }
 
   // instiutte create here
 
   intSubmit() {
     console.log(this.institutPost.value);
-    if (this.institutPost.valid) {
-      // console.log(this.institutPost.value);
-      this.instService
-        .insttePost(this.institutPost.value)
-        .subscribe((result) => {
-          console.log(result);
+    // if (this.institutPost.invalid) {
+    //   console.log(this.institutPost.value);
+    //   // alert('Select all field');
+    // }
+    this.instService.insttePost(this.institutPost.value).subscribe((result) => {
+      console.log(result);
 
-          this.responceData = result;
-          console.log(this.responceData);
-          // if (result != null) {
-          //   this.responceData = result;
+      this.responceData = result;
+      // localStorage.setItem('token',this.responceData.access_token);
 
-          //   console.log(this.responceData);
-          //   // console.log(result);
-          //   // alert('Login Successfull');
-          // }
-        });
-    }
+      console.log(this.responceData);
+
+    });
   }
 
   // union code chere
 
   unionData() {
-    this.instService.unionData(this.institutPost.value).subscribe((result) => {
-      // console.log(result);
+    this.instService.unionData(this.institutPost.value)
+    .subscribe({
+      next:((result) => {
+        this.unionName = result;
 
-      this.unionName = result;
-      // console.log(this.unionName);
-    });
+      }),
+      error:((err) => {
+        console.log(err);
+      })
+   } );
   }
 
   // catagory code here
   cattData() {
-    // console.log(select.value)
-    this.instService.CatData(this.institutPost.value).subscribe((result) => {
-      this.catagoryData = result;
-      // console.log(this.catagoryData)
+
+    this.instService.CatData(this.institutPost.value)
+    .subscribe({
+      next:((result) => {
+        this.catagoryData = result;
+        // console.log(this.catagoryData)
+      }),
+      error:((err) => {
+        console.log(err);
+      })
     });
   }
   // SubCatagory code here
@@ -98,9 +103,9 @@ export class InstituteAddComponent implements OnInit {
   //   this.instService.SubCatData(this.institutPost.value).subscribe((result) => {
   //     this.subCatagoryData = result;
   //     console.log(this.subCatagoryData)
-      
+
   //   });
-    
+
   // }
 
   // instituteData:any[] = [
@@ -138,21 +143,19 @@ export class InstituteAddComponent implements OnInit {
   //   InstituteSubType:[],
   // }
 
-  getSubType(select: any){
-  console.log(select.value);
-  this.instService.SubCatData(this.institutPost.value, select.value).subscribe((result) => {
-    this.subCatagoryData = result;
-    console.log(this.subCatagoryData)
-    
-  });
-  
+  getSubType(select: any) {
+    this.instService
+      .SubCatData(this.institutPost.value, select.value)
+      .subscribe((result) => {
+        this.subCatagoryData = result;
+      });
   }
 
   // getSubType(select: any){
   //   console.log(select.value);
-    // this.subType=this.instituteData.filter((value)=>{
-    //   return value.instituteName===select.value;
-    // })[0];
-    // console.log(this.subType)
-    // }
+  // this.subType=this.instituteData.filter((value)=>{
+  //   return value.instituteName===select.value;
+  // })[0];
+  // console.log(this.subType)
+  // }
 }
