@@ -20,10 +20,10 @@
           <c-col md="6">
             <label cLabel for="inputState1">Institute Category</label>
             <!-- <select formControlName="instituteCat" cSelect id="inputState" (change)="getSubType(select)" #select> -->
-            <select  cSelect id="inputState11" (change)="getSubType(select)" #select>
+            <select formControlName="first_category_id"  cSelect id="inputState11" (change)="getSubType(select)" #select>
               <option>Choose...</option>
               <!-- <option  *ngFor="let item of instituteData" [value]="item.instituteName">{{item.instituteName}}</option> -->
-              <option  *ngFor="let item of catagoryData" >{{item.name}}</option>
+              <option  *ngFor="let item of catagoryData" value="{{item.id}}">{{item.name}}</option>
 
             </select>
           </c-col>

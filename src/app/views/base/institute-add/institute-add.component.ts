@@ -39,6 +39,7 @@ export class InstituteAddComponent implements OnInit {
     this.institutPost = this.fb.group({
       name: ['', Validators.required],
       eiin: ['', Validators.required],
+      first_category_id: ['', Validators.required],
       categories_id: ['', Validators.required],
       type: ['', Validators.required],
       union_id: ['', Validators.required],
@@ -96,7 +97,7 @@ export class InstituteAddComponent implements OnInit {
     .subscribe({
       next:((result) => {
         this.catagoryData = result;
-        // console.log(this.catagoryData)
+        console.log(this.catagoryData)
       }),
       error:((err) => {
         console.log(err);
