@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
-const apiurl='https://api.omegaitsys.com/api/v1/admin/login';
+const apiurl='https://api.omegaitsys.com/api/v1/';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,11 @@ export class AuthService {
 
 
 proceedLogin(usercred: any){
-return this.http.post<any>(apiurl, usercred)
+return this.http.post<any>(apiurl + "admin/login", usercred)
+}
+
+anyUserLogin(anyuserlogin:any){
+  return this.http.post<any> (apiurl + "login", anyuserlogin)
 }
 
 IsLoggedIn(){

@@ -54,6 +54,7 @@ import {
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { ProfileComponent } from './containers/default-layout/profile/profile.component';
 import { FormsModule } from '@angular/forms';
+import { AdminComponent } from './admin/admin.component';
 
 
 
@@ -70,7 +71,7 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS, ProfileComponent],
+  declarations: [AppComponent, ...APP_CONTAINERS, ProfileComponent, AdminComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

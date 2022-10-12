@@ -7,6 +7,7 @@ import { Page500Component } from './views/pages/page500/page500.component';
 // import { LoginComponent } from './views/pages/login/login.component';
 import { RegisterComponent } from './views/pages/register/register.component';
 import { AuthGuard } from './guard/auth.guard';
+import { AdminComponent } from './admin/admin.component';
 
 
 const childrenRoutes: Routes = [
@@ -71,6 +72,8 @@ const childrenRoutes: Routes = [
 ]
 
 
+
+
 const routes: Routes = [
   {
     path: '',
@@ -90,6 +93,16 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: {
       title: 'Home'
+    },
+
+  },
+  {
+    path: 'adminn',
+    component: AdminComponent,
+    // children: childrenRoutes,
+    canActivate: [AuthGuard],
+    data: {
+      title: 'Admin Home'
     },
 
   },
