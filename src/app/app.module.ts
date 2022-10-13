@@ -10,7 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AuthUserInterceptor} from './auth-interceptor/auth-user.interceptor'
-
+import {MatMenuModule} from '@angular/material/menu';
 import {
   PERFECT_SCROLLBAR_CONFIG,
   PerfectScrollbarConfigInterface,
@@ -102,6 +102,7 @@ const APP_CONTAINERS = [
     MatIconModule,
     HttpClientModule,
     FormsModule,
+    MatMenuModule
 
   ],
   providers: [

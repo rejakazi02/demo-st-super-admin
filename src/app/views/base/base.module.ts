@@ -47,8 +47,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import { InstituteAddComponent } from './institute-add/institute-add.component';
 import {MatSelectModule} from '@angular/material/select';
-
-
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
 @NgModule({
   imports: [
     CommonModule,
@@ -84,7 +84,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatFormFieldModule,
     MatIconModule,
     MatSelectModule,
-
+    MatMenuModule,
+    MatButtonModule,
   ],
   declarations: [
 
