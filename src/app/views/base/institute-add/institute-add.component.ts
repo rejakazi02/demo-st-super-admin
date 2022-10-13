@@ -58,6 +58,7 @@ export class InstituteAddComponent implements OnInit {
     this.instService.insttePost(this.institutPost.value).subscribe((result) => {
       this.responceData = result;
       this.institutPost.reset();
+      alert(' Data Insert Successfull');
     });
   }
 
