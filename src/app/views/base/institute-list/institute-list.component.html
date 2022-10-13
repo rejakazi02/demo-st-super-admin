@@ -1,79 +1,76 @@
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource">
-
     <!-- Position Column -->
-    <ng-container matColumnDef="position">
+    <!-- <ng-container matColumnDef="position">
       <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-    </ng-container>
-
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container> -->
 
     <!-- Name Column -->
     <ng-container matColumnDef="institute_name">
-      <th mat-header-cell *matHeaderCellDef>Institute Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      <th mat-header-cell *matHeaderCellDef>Institute Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.institute_name }}</td>
     </ng-container>
 
     <!-- eiin Column -->
     <ng-container matColumnDef="eiin">
-      <th mat-header-cell *matHeaderCellDef> EIIN </th>
-      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+      <th mat-header-cell *matHeaderCellDef>EIIN</th>
+      <td mat-cell *matCellDef="let element">{{ element.eiin }}</td>
     </ng-container>
 
     <!-- parent_category Column -->
     <ng-container matColumnDef="parent_category">
-      <th mat-header-cell *matHeaderCellDef> Parent Category </th>
-      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+      <th mat-header-cell *matHeaderCellDef>Parent Category</th>
+      <td mat-cell *matCellDef="let element">{{ element.parent_category }}</td>
     </ng-container>
     <!-- type Column -->
     <ng-container matColumnDef="type">
-      <th mat-header-cell *matHeaderCellDef> Type </th>
-      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+      <th mat-header-cell *matHeaderCellDef>Type</th>
+      <td mat-cell *matCellDef="let element">{{ element.type }}</td>
     </ng-container>
     <!-- union Column -->
     <ng-container matColumnDef="union">
-      <th mat-header-cell *matHeaderCellDef> Union </th>
-      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+      <th mat-header-cell *matHeaderCellDef>Union</th>
+      <td mat-cell *matCellDef="let element">{{ element.union }}</td>
     </ng-container>
     <!-- institute_phone Column -->
     <ng-container matColumnDef="institute_phone">
-      <th mat-header-cell *matHeaderCellDef> Phone </th>
-      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+      <th mat-header-cell *matHeaderCellDef>Phone</th>
+      <td mat-cell *matCellDef="let element">{{ element.admin_info.phone }}</td>
     </ng-container>
     <!-- action Column -->
     <ng-container matColumnDef="action">
-      <th mat-header-cell *matHeaderCellDef>  </th>
-      <td mat-cell *matCellDef="let element"> 
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
         <!-- action button  -->
-        <button mat-button [matMenuTriggerFor]="menu"  aria-label="Example icon-button with a menu" class="action-Btn">
-        <!-- <mat-icon>more_vert</mat-icon> -->
-        Action
-      </button>
-      <mat-menu #menu="matMenu">
-        <!-- <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+        <button mat-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" class="action-Btn">
+          <!-- <mat-icon>more_vert</mat-icon> -->
+          Action
+        </button>
+        <mat-menu #menu="matMenu">
+          <!-- <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
           <mat-icon>edit</mat-icon>
         </button> -->
-        <button mat-menu-item>
-          <mat-icon>edit</mat-icon>
-          <span>Edit</span>
-        </button>
-        <button mat-menu-item>
-          <mat-icon>delete</mat-icon>
-          <span>Delete</span>
-        </button>
-        
-        
-      </mat-menu>
-       </td>
+          <button mat-menu-item>
+            <mat-icon>edit</mat-icon>
+            <span>Edit</span>
+          </button>
+          <button (click)="deleteDataa(element.slug)" mat-menu-item>
+            <mat-icon>delete</mat-icon>
+            <span>Delete</span>
+          </button>
+
+          <!-- (click)="deleteData(element.slug)" -->
+        </mat-menu>
+      </td>
     </ng-container>
-    
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                 showFirstLastButtons 
-                 aria-label="Select page of periodic elements">
+  <mat-paginator [length]="length" [pageSizeOptions]="pageSizeOptions" [pageSize]="pageSize" (page)="pageEvent = $event"
+    (onPageChange)="onPageChangeEvent($event)" setPageSizeOptions showFirstLastButtons
+    aria-label="Select page of periodic elements">
   </mat-paginator>
 </div>

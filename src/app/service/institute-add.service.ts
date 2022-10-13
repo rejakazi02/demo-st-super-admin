@@ -16,29 +16,20 @@ let baseurl = ' https://api.omegaitsys.com/api/v1/';
   providedIn: 'root',
 })
 export class InstituteAddService {
-
-
   constructor(private http: HttpClient, private tokenService: TokenService) {}
 
-
-  insttePost(signUpPayload: any){
-
-    return this.http.post<any>(baseurl + 'admin/institutes', signUpPayload)
-
+  insttePost(signUpPayload: any) {
+    return this.http.post<any>(baseurl + 'admin/institutes', signUpPayload);
   }
 
-  instituteList(){
-
+  instituteList() {
     // return this.http.get<any>(baseurl + 'admin/institutes')
-    return this.http.get(baseurl +'admin/institutes')
-
+    return this.http.get(baseurl + 'admin/institutes');
   }
 
-  IsLoggedIn(){
-    return localStorage.getItem('token')!=null;
+  IsLoggedIn() {
+    return localStorage.getItem('token') != null;
   }
-
-
 
   unionData(unionname: any) {
     return this.http.get(baseurl + 'unions', unionname);
@@ -48,9 +39,11 @@ export class InstituteAddService {
     return this.http.get(baseurl + 'root-categories', CatType);
   }
 
-
-
-  SubCatData(subCatType: any, select:any ) {
-    return this.http.get(baseurl + 'root-sub-categories/'+ select, subCatType);
+  SubCatData(subCatType: any, select: any) {
+    return this.http.get(baseurl + 'root-sub-categories/' + select, subCatType);
+  }
+// data delete 
+  deleteData(data: string) {
+    return this.http.delete(baseurl + 'admin/institutes/' + data);
   }
 }
