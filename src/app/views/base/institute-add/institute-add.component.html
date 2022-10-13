@@ -1,15 +1,11 @@
 <c-row>
-
   <c-col xs="12">
     <c-card class="mb-4">
-
       <c-card-body>
-
-
         <form cForm class="row g-3" [formGroup]="institutPost" (ngSubmit)="intSubmit()">
           <c-col xs="12">
             <label cLabel for="inputAddress">Institute Name</label>
-            <input formControlName="name"  cFormControl id="inputInstituteName" placeholder="Institute Name" />
+            <input formControlName="name" cFormControl id="inputInstituteName" placeholder="Institute Name" />
           </c-col>
 
           <!-- <c-col xs="12">
@@ -20,14 +16,15 @@
           <c-col md="6">
             <label cLabel for="inputState1">Institute Category</label>
             <!-- <select formControlName="instituteCat" cSelect id="inputState" (change)="getSubType(select)" #select> -->
-            <select formControlName="parent_category_id"  cSelect id="inputState11" (change)="getSubType(select)" #select>
+            <select formControlName="parent_category_id" cSelect id="inputState11" (change)="getSubType(select)"
+              #select>
               <option>Choose...</option>
               <!-- <option  *ngFor="let item of instituteData" [value]="item.instituteName">{{item.instituteName}}</option> -->
-              <option  *ngFor="let item of catagoryData" value="{{item.slug}}">{{item.name}}</option>
-
+              <option *ngFor="let item of catagoryData" value="{{ item.slug }}">
+                {{ item.name }}
+              </option>
             </select>
           </c-col>
-
 
           <!-- <c-col md="6">
             <label cLabel for="inputState3">Institute sub Type</label>
@@ -39,64 +36,54 @@
             </select>
           </c-col> -->
 
-
           <c-col md="6" class="test">
             <label cLabel for="2">Institute sub type</label>
             <mat-form-field appearance="fill" cSelect id="inputState21">
               <mat-label>Choose...</mat-label>
-              <mat-select formControlName="categories_id"   for [formControl]="toppings" multiple>
-                <!-- <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option> -->
-                <!-- <mat-option>Chose......</mat-option> -->
-                <mat-option *ngFor ="let item of subCatagoryData" value="{{item.id}}">{{item.name}}</mat-option>
-                <!-- <mat-option *ngFor="let item of subType.InstituteSubType" [value]="item">{{item}}</mat-option> -->
+              <mat-select formControlName="categories_id" for [formControl]="toppings" multiple>
+                <mat-option *ngFor="let item of subCatagoryData" value="{{ item.id }}">{{ item.name }}</mat-option>
               </mat-select>
             </mat-form-field>
           </c-col>
 
           <c-col md="6">
             <label cLabel for="inputState3">Institute Type</label>
-            <select formControlName="type"  cSelect id="inputState33">
+            <select formControlName="type" cSelect id="inputState33">
               <option>Choose...</option>
               <option>Government</option>
               <option>Private</option>
-
             </select>
           </c-col>
 
           <c-col md="6">
             <label cLabel for="inputState4">Union Name</label>
-            <select formControlName="union_id"   cSelect id="inputState333" >
+            <select formControlName="union_id" cSelect id="inputState333">
               <option>Choose...</option>
-              <option *ngFor="let item of unionName.data" value="{{item.id}}">{{item.name}}</option>
-
-
-
+              <option *ngFor="let item of unionName" value="{{ item.id }}">
+                {{ item.name }}
+              </option>
             </select>
           </c-col>
 
-
-
-
-
-
           <c-col md="6">
             <label cLabel for="inputEmail4">Email</label>
-            <input formControlName="user_name"   cFormControl id="inputEmail4" type="email" />
+            <input formControlName="user_name" cFormControl id="inputEmail4" type="email" />
           </c-col>
           <c-col md="6">
             <label cLabel for="inputPassword54">Password</label>
-            <input formControlName="password"   cFormControl id="inputPassword41" type="password" />
+            <input formControlName="password" cFormControl id="inputPassword41" type="password" />
           </c-col>
           <c-col md="6">
             <label cLabel for="inputPassword44">Phone Number</label>
-            <input formControlName="user_phone"   cFormControl id="inputPassword42" type="text" placeholder="Phone Number" />
+            <input formControlName="user_phone" cFormControl id="inputPassword42" type="text"
+              placeholder="Phone Number" />
           </c-col>
           <c-col md="6">
             <label cLabel for="inputPassword4">EIIn Number</label>
-            <input formControlName="eiin"   cFormControl id="inputPassword43" type="number" placeholder="EIIn Number" />
-                    </c-col>
+            <input formControlName="eiin" cFormControl id="inputPassword43" type="number" placeholder="EIIn Number" />
+          </c-col>
 
-           <!-- <c-col md="2">
+          <!-- <c-col md="2">
             <label cLabel for="inputZip">Zip</label>
             <input cFormControl id="inputZip" />
              </c-col> -->
@@ -105,15 +92,6 @@
             <button cButton type="submit">Add Institute</button>
           </c-col>
         </form>
-
-
-
-
-
-
-
-
-
 
         <!-- <app-docs-example href="">
           <form cForm class="row g-3">
@@ -162,10 +140,4 @@
       </c-card-body>
     </c-card>
   </c-col>
-
-
 </c-row>
-
-
-
-

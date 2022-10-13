@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     // throw new Error('Method not implemented.');
     this.logInForm = this.fb.group({
-      email: ['', [ Validators.required]],
+      email: ['', [Validators.required]],
       password: ['', Validators.required],
     });
   }
@@ -35,22 +35,15 @@ export class LoginComponent implements OnInit {
           if (result != null) {
             this.responceData = result;
 
-            localStorage.setItem('token',this.responceData.access_token);
-           
+            localStorage.setItem('token', this.responceData.access_token);
+
             this.route.navigate(['/', 'dashboard']);
-            console.log('login token',this.responceData.access_token);
+
             alert('Login Successfull');
           }
         });
-
     }
-    
   }
-
-
-
-
-
 
   logout(): void {
     this.authService.logOut();

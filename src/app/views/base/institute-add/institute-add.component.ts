@@ -19,14 +19,14 @@ export class InstituteAddComponent implements OnInit {
   responceData: any;
   institutPost!: FormGroup;
   unionName: any;
+  undata: any;
   catagoryData: any;
   catagoryDataa: any;
   subCatagoryData: any;
 
-  addInstite=new AddInstute();
+  addInstite = new AddInstute();
 
   toppings = new FormControl('');
-  // toppingList: string[] = ['1 ', '2', '3', '4', '5', '6'];
 
   constructor(
     private instService: InstituteAddService,
@@ -46,115 +46,52 @@ export class InstituteAddComponent implements OnInit {
       user_name: ['', [Validators.required]],
       user_phone: ['', Validators.required],
       password: ['', Validators.required],
-      
     });
 
     this.unionData();
     this.cattData();
-    // this.SubCatData();
-    // this.intSubmit();
   }
 
   // instiutte create here
 
   intSubmit() {
-   
-    
     this.instService.insttePost(this.institutPost.value).subscribe((result) => {
       this.responceData = result;
-                 this.institutPost.reset();
+      this.institutPost.reset();
     });
   }
 
   // union code chere
 
   unionData() {
-    this.instService.unionData(this.institutPost.value)
-    .subscribe({
-      next:((result) => {
-        this.unionName = result;
-
-      }),
-      error:((err) => {
+    this.instService.unionData(this.institutPost.value).subscribe({
+      next: (result) => {
+        this.undata = result;
+        this.unionName = this.undata.data;
+      },
+      error: (err) => {
         console.log(err);
-      })
-   } );
+      },
+    });
   }
 
   // catagory code here
   cattData() {
-
-    this.instService.CatData(this.institutPost.value)
-    .subscribe({
-      next:((result) => {
+    this.instService.CatData(this.institutPost.value).subscribe({
+      next: (result) => {
         this.catagoryData = result;
-        console.log(this.catagoryData)
-      }),
-      error:((err) => {
+      },
+      error: (err) => {
         console.log(err);
-      })
+      },
     });
   }
-  // SubCatagory code here
-  // SubCatData() {
-  //   this.instService.SubCatData(this.institutPost.value).subscribe((result) => {
-  //     this.subCatagoryData = result;
-  //     console.log(this.subCatagoryData)
-
-  //   });
-
-  // }
-
-  // instituteData:any[] = [
-  //   {
-  //    _id:1,
-  //    instituteName:'Primary school',
-  //    instituteCategory:['One','Two'],
-  //    InstituteSubType:['sub-institute 1','Sub-Institute 2','Sub-Institute 3'],
-  //   },
-  //   {
-  //     _id:2,
-  //     instituteName:'High school',
-  //     instituteCategory:['Four','Five'],
-  //     InstituteSubType:['sub-institute 4','Sub-Institute 5','Sub-Institute 6'],
-
-  //    },
-  //    {
-  //     _id:3,
-  //     instituteName:' Collage',
-  //     instituteCategory:['Six','Seven'],
-  //     InstituteSubType:['sub-institute 6','Sub-Institute 7','Sub-Institute 8'],
-  //    }
-  //   ]
-
-  // subType: any={
-  //   _id:1,
-  //   instituteName: ' ',
-  //   instituteCategory:[],
-  //   InstituteSubType:[],
-  // }
-  // subType: any={
-  //   _id:1,
-  //   instituteName: ' ',
-  //   instituteCategory:[],
-  //   InstituteSubType:[],
-  // }
 
   getSubType(select: any) {
-    console.log('select',select)
     this.instService
       .SubCatData(this.institutPost.value, select.value)
       .subscribe((result) => {
         this.subCatagoryData = result;
-       
       });
   }
-
-  // getSubType(select: any){
-  //   console.log(select.value);
-  // this.subType=this.instituteData.filter((value)=>{
-  //   return value.instituteName===select.value;
-  // })[0];
-  // console.log(this.subType)
-  // }
 }
