@@ -44,26 +44,6 @@ export class LoginComponent implements OnInit {
         });
 
     }
-
-
-    if (this.logInForm.valid) {
-      this.authService
-        .anyUserLogin(this.logInForm.value)
-        .subscribe((result) => {
-          if (result != null) {
-            this.responceData = result;
-
-            localStorage.setItem('token',this.responceData.access_token);
-            this.route.navigate(['/', 'adminn']);
-            console.log('login token',this.responceData.access_token);
-            alert('Login user Successfull');
-          }
-        });
-    }
-
-
-
-    
     
   }
 

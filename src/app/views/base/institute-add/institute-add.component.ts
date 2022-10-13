@@ -39,7 +39,7 @@ export class InstituteAddComponent implements OnInit {
     this.institutPost = this.fb.group({
       name: ['', Validators.required],
       eiin: ['', Validators.required],
-      first_category_id: ['', Validators.required],
+      parent_category_id: ['', Validators.required],
       categories_id: ['', Validators.required],
       type: ['', Validators.required],
       union_id: ['', Validators.required],
@@ -58,20 +58,11 @@ export class InstituteAddComponent implements OnInit {
   // instiutte create here
 
   intSubmit() {
-    // this.institutPost.reset();
-    console.log('check data',this.institutPost.value);
-    // if (this.institutPost.invalid) {
-    //   console.log(this.institutPost.value);
-    //   // alert('Select all field');
-    // }
+   
+    
     this.instService.insttePost(this.institutPost.value).subscribe((result) => {
-      // console.log(result);
-
       this.responceData = result;
-      // localStorage.setItem('token',this.responceData.access_token);
-
-      console.log('input data',this.responceData);
-
+                 this.institutPost.reset();
     });
   }
 
@@ -150,10 +141,12 @@ export class InstituteAddComponent implements OnInit {
   // }
 
   getSubType(select: any) {
+    console.log('select',select)
     this.instService
       .SubCatData(this.institutPost.value, select.value)
       .subscribe((result) => {
         this.subCatagoryData = result;
+       
       });
   }
 

@@ -26,6 +26,14 @@ export class InstituteAddService {
     return this.http.post<any>(baseurl + 'admin/institutes', signUpPayload)
 
   }
+
+  instituteList(){
+
+    // return this.http.get<any>(baseurl + 'admin/institutes')
+    return this.http.get(baseurl +'admin/institutes')
+
+  }
+
   IsLoggedIn(){
     return localStorage.getItem('token')!=null;
   }

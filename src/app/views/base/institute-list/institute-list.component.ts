@@ -1,5 +1,11 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { InstituteAddService } from './../../../service/institute-add.service';
+import {
+  FormControl,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 export interface PeriodicElement {
   name: string;
@@ -25,16 +31,42 @@ const ELEMENT_DATA: PeriodicElement[] = [
   templateUrl: './institute-list.component.html',
   styleUrls: ['./institute-list.component.scss']
 })
-export class InstituteListComponent {
+export class InstituteListComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'action'];
   dataSource = ELEMENT_DATA;
 
-constructor(private intService:InstituteAddService){
+  institutEList:any;
+ 
+
+constructor( private insService: InstituteAddService){
 
 }
+  ngOnInit(): void {
+    this.instList();
+  }
+
+  // cattData() {
+
+  //   this.instService.CatData(this.institutPost.value)
+  //   .subscribe({
+  //     next:((result) => {
+  //       this.catagoryData = result;
+  //       console.log(this.catagoryData)
+  //     }),
+  //     error:((err) => {
+  //       console.log(err);
+  //     })
+  //   });
+  // }
 
 
 
+instList() {
+
+ this.insService.instituteList().subscribe(result=>{
+  console.log('result', result);
+ })
+}
 
 
 
