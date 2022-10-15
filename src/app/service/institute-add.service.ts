@@ -42,6 +42,28 @@ export class InstituteAddService {
   SubCatData(subCatType: any, select: any) {
     return this.http.get(baseurl + 'root-sub-categories/' + select, subCatType);
   }
+
+
+
+
+
+// institute edit data 
+
+getInstDataBySlug(slug: any){
+  
+  return this.http.get(baseurl + 'admin/institutes/' + slug);
+  
+}
+
+
+instteUpdate(data: any) {
+  return this.http.put<any>(baseurl + 'admin/institutes', data);
+}
+
+
+
+
+
 // data delete 
   deleteData(data: string) {
     return this.http.delete(baseurl + 'admin/institutes/' + data);

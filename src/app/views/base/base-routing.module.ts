@@ -26,6 +26,13 @@ const routes: Routes = [
         },
       },
       {
+        path: 'instituteEdit/:slug',
+        component: InstituteAddComponent,
+        data: {
+          title: 'Institute Add',
+        },
+      },
+      {
         path: 'instList',
         component: InstituteListComponent,
         data: {

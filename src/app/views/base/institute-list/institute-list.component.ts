@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { OnInit } from '@angular/core';
 import { InstituteAddService } from './../../../service/institute-add.service';
 import {
@@ -17,6 +18,7 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./institute-list.component.scss'],
 })
 export class InstituteListComponent implements OnInit, AfterViewInit {
+[x: string]: any;
   institutEList: any;
   instData: any;
   displayedColumns: string[] = [
@@ -29,6 +31,7 @@ export class InstituteListComponent implements OnInit, AfterViewInit {
     'action',
   ];
   dataSource = [];
+ 
 
   // MatPaginator Inputs
   length = 1;
@@ -43,7 +46,7 @@ export class InstituteListComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     // this.dataSource.paginator = this.paginator;
   }
-  constructor(private insService: InstituteAddService) {}
+  constructor(private insService: InstituteAddService, private router: Router) {}
   ngOnInit(): void {
     this.instList();
   }
@@ -55,6 +58,8 @@ export class InstituteListComponent implements OnInit, AfterViewInit {
         .map((str) => +str);
     }
   }
+
+  // get institute list data
   instList() {
     this.insService.instituteList().subscribe((result) => {
       this.instData = result;
@@ -78,10 +83,29 @@ export class InstituteListComponent implements OnInit, AfterViewInit {
 
   onPageChangeEvent(event: any) {}
 
+// institute edit function 
+
+editDataa(editSlaug: any, id: any){
+  // this.insService.editData(editSlaug).subscribe((result) =>{
+  //     console.log(result)
+  // });
+  this.dataSource[id];
+this.router.navigate(['/base/instituteAdd'])
+  console.log('update data' , this.dataSource[id])
+
+
+
+}
+
+
+
+// institute delete data function 
   deleteDataa(slug: string) {
     this.insService.deleteData(slug).subscribe((result) => {
       window.location.reload();
       alert(' Data Delete Successfull');
     });
   }
+
+
 }

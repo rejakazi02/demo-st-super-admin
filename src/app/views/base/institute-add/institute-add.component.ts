@@ -8,7 +8,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { InstituteAddService } from './../../../service/institute-add.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { param } from 'jquery';
 
 @Component({
   selector: 'app-institute-add',
@@ -23,6 +24,8 @@ export class InstituteAddComponent implements OnInit {
   catagoryData: any;
   catagoryDataa: any;
   subCatagoryData: any;
+  slug?: any;
+  getUpdateData:any;
 
   addInstite = new AddInstute();
 
@@ -32,7 +35,8 @@ export class InstituteAddComponent implements OnInit {
     private instService: InstituteAddService,
     private fb: FormBuilder,
 
-    private route: Router
+    private route: Router,
+    private activateRoute: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
@@ -50,16 +54,32 @@ export class InstituteAddComponent implements OnInit {
 
     this.unionData();
     this.cattData();
+// update data 
+this.activateRoute.paramMap.subscribe((param)=>{
+  this.slug=param.get('slug');
+// console.log('param', {this.slug} )
+  if(this.slug){ 
+    this.getInstDataBySlug(this.slug);
+  }
+})
+
   }
 
   // instiutte create here
 
   intSubmit() {
-    this.instService.insttePost(this.institutPost.value).subscribe((result) => {
-      this.responceData = result;
-      this.institutPost.reset();
-      alert(' Data Insert Successfull');
-    });
+    if(this.getUpdateData){
+      this.instteUpdate(this.institutPost.value);
+    }
+    else{
+      this.instService.insttePost(this.institutPost.value).subscribe((result) => {
+        this.responceData = result;
+        this.institutPost.reset();
+        alert(' Data Insert Successfull');
+      });
+    }
+   
+   
   }
 
   // union code chere
@@ -95,4 +115,26 @@ export class InstituteAddComponent implements OnInit {
         this.subCatagoryData = result;
       });
   }
+
+  getInstDataBySlug(slug:any) {
+    this.instService.getInstDataBySlug(slug)
+      .subscribe((result) => {
+        this.getUpdateData = result;
+        console.log('get data', this.getUpdateData)
+        this.setFormData();
+      });
+  }
+
+  setFormData(){
+    this.institutPost.patchValue(this.getUpdateData)
+  }
+
+  instteUpdate(data:any) {
+    this.instService.instteUpdate(data)
+      .subscribe((result) => {
+       
+        
+      });
+  }
+  
 }
