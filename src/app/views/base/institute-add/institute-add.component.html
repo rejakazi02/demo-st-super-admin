@@ -20,7 +20,7 @@
               #select>
               <option>Choose...</option>
               <!-- <option  *ngFor="let item of instituteData" [value]="item.instituteName">{{item.instituteName}}</option> -->
-              <option *ngFor="let item of catagoryData" value="{{ item.slug }}">
+              <option *ngFor="let item of catagoryData" [value]="item.slug">
                 {{ item.name }}
               </option>
             </select>
@@ -30,7 +30,7 @@
 
           <c-col md="6" class="test">
             <label cLabel for="2">Institute sub type</label>
-            <mat-form-field appearance="fill" cSelect id="inputState21">
+            <mat-form-field appearance="fill" cSelect id="inputState21" appearance="outline">
               <mat-label>Choose...</mat-label>
               <mat-select formControlName="categories_id" for [formControl]="toppings" multiple>
                 <mat-option *ngFor="let item of subCatagoryData" value="{{ item.id }}">{{ item.name }}</mat-option>
@@ -42,8 +42,8 @@
             <label cLabel for="inputState3">Institute Type</label>
             <select formControlName="type" cSelect id="inputState33">
               <option>Choose...</option>
-              <option>Government</option>
-              <option>Private</option>
+              <option value="government">Government</option>
+              <option value="private">Private</option>
             </select>
           </c-col>
 

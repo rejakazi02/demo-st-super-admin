@@ -53,13 +53,15 @@ export class InstituteAddComponent implements OnInit {
     });
 
     this.unionData();
-    this.cattData();
+   
 // update data 
 this.activateRoute.paramMap.subscribe((param)=>{
   this.slug=param.get('slug');
 // console.log('param', {this.slug} )
   if(this.slug){ 
     this.getInstDataBySlug(this.slug);
+  } else {
+    this.cattData();
   }
 })
 
@@ -68,12 +70,16 @@ this.activateRoute.paramMap.subscribe((param)=>{
   // instiutte create here
 
   intSubmit() {
+    console.log(this.institutPost.value);
+    
     if(this.getUpdateData){
-      this.instteUpdate(this.institutPost.value);
+      this.instteUpdate(this.institutPost.value, this.getUpdateData.slug);
     }
     else{
       this.instService.insttePost(this.institutPost.value).subscribe((result) => {
         this.responceData = result;
+        console.log('responceData', this.responceData);
+        
         this.institutPost.reset();
         alert(' Data Insert Successfull');
       });
@@ -101,6 +107,20 @@ this.activateRoute.paramMap.subscribe((param)=>{
     this.instService.CatData(this.institutPost.value).subscribe({
       next: (result) => {
         this.catagoryData = result;
+        console.log(' this.catagoryData',  this.catagoryData);
+        
+        if(this.slug) {
+          const gg = this.catagoryData.find((f: { id: any; }) => f.id == this.getUpdateData.parent_category_id).slug
+          console.log('gg', gg);
+          
+          this.institutPost.patchValue({
+            user_phone: this.getUpdateData.admin.phone,
+            parent_category_id: 'degree',
+          
+            // categories_id: this.getUpdateData.first_category_id.map((f: { id: any; }) => f.id ),
+      
+          })
+        }
       },
       error: (err) => {
         console.log(err);
@@ -113,6 +133,8 @@ this.activateRoute.paramMap.subscribe((param)=>{
       .SubCatData(this.institutPost.value, select.value)
       .subscribe((result) => {
         this.subCatagoryData = result;
+        console.log('subCatagoryData',this.subCatagoryData);
+        
       });
   }
 
@@ -121,19 +143,22 @@ this.activateRoute.paramMap.subscribe((param)=>{
       .subscribe((result) => {
         this.getUpdateData = result;
         console.log('get data', this.getUpdateData)
+        this.cattData();
         this.setFormData();
+        this.cattData()
+       
       });
+      
   }
 
   setFormData(){
     this.institutPost.patchValue(this.getUpdateData)
   }
 
-  instteUpdate(data:any) {
-    this.instService.instteUpdate(data)
+  instteUpdate(data:any, slug: any) {
+    this.instService.instteUpdate(data, slug)
       .subscribe((result) => {
        
-        
       });
   }
   

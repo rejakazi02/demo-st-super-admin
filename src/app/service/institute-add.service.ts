@@ -56,8 +56,8 @@ getInstDataBySlug(slug: any){
 }
 
 
-instteUpdate(data: any) {
-  return this.http.put<any>(baseurl + 'admin/institutes', data);
+instteUpdate(data: any, slug: any) {
+  return this.http.put<any>(baseurl + 'admin/institutes/' + slug, data);
 }
 
 
