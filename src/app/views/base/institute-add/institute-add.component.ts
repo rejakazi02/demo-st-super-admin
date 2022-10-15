@@ -152,6 +152,13 @@ this.activateRoute.paramMap.subscribe((param)=>{
   }
 
   setFormData(){
+    this.institutPost.patchValue({
+      user_phone: this.getUpdateData.admin.phone,
+      // parent_category_id: 'degree',
+    
+      // categories_id: this.getUpdateData.first_category_id.map((f: { id: any; }) => f.id ),
+
+    })
     this.institutPost.patchValue(this.getUpdateData)
   }
 
