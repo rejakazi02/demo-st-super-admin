@@ -34,9 +34,10 @@ export class InstituteListComponent implements OnInit, AfterViewInit {
  
 
   // MatPaginator Inputs
-  length = 1;
-  pageSize = 3;
-  pageSizeOptions = [3, 10];
+  current_page: any=1;
+  last_page_number:any;
+  itemPer_page: any = 2;
+  totalpage:any;
 
   // MatPaginator Output
   pageEvent: PageEvent;
@@ -51,13 +52,13 @@ export class InstituteListComponent implements OnInit, AfterViewInit {
     this.instList();
   }
 
-  setPageSizeOptions(setPageSizeOptionsInput: string) {
-    if (setPageSizeOptionsInput) {
-      this.pageSizeOptions = setPageSizeOptionsInput
-        .split(',')
-        .map((str) => +str);
-    }
-  }
+  // setPageSizeOptions(setPageSizeOptionsInput: string) {
+  //   if (setPageSizeOptionsInput) {
+  //     this.pageSizeOptions = setPageSizeOptionsInput
+  //       .split(',')
+  //       .map((str) => +str);
+  //   }
+  // }
 
   // get institute list data
   instList() {
@@ -71,11 +72,11 @@ export class InstituteListComponent implements OnInit, AfterViewInit {
       // this.pageSizeOptions = this.instData.institutes.meta.per_page;
       // console.log('this.dataSource',this.dataSource);
 
-      this.length = this.instData.institutes.meta.total;
-      this.pageSize = this.instData.institutes.links.next;
-      console.log(this.pageSize);
-      this.pageSizeOptions = this.instData.institutes.links.next;
-      console.log(this.pageSizeOptions);
+      // this.length = this.instData.institutes.meta.total;
+      // this.pageSize = this.instData.institutes.links.next;
+      // console.log(this.pageSize);
+      // this.pageSizeOptions = this.instData.institutes.links.next;
+      // console.log(this.pageSizeOptions);
 
       console.log('this.dataSource', this.dataSource);
     });
@@ -83,21 +84,10 @@ export class InstituteListComponent implements OnInit, AfterViewInit {
 
   onPageChangeEvent(event: any) {}
 
-// institute edit function 
-
-editDataa(editSlaug: any, id: any){
-  // this.insService.editData(editSlaug).subscribe((result) =>{
-  //     console.log(result)
-  // });
-  this.dataSource[id];
-this.router.navigate(['/base/instituteAdd'])
-  console.log('update data' , this.dataSource[id])
-
-
-
+// paiganation 
+onPageChanged(e:number){
+  this.current_page = e;
 }
-
-
 
 // institute delete data function 
   deleteDataa(slug: string) {

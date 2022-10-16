@@ -25,7 +25,7 @@ export class InstituteAddComponent implements OnInit {
   catagoryDataa: any;
   subCatagoryData: any;
   slug?: any;
-  getUpdateData:any;
+  getUpdateData: any;
 
   addInstite = new AddInstute();
 
@@ -36,7 +36,7 @@ export class InstituteAddComponent implements OnInit {
     private fb: FormBuilder,
 
     private route: Router,
-    private activateRoute: ActivatedRoute,
+    private activateRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -53,39 +53,38 @@ export class InstituteAddComponent implements OnInit {
     });
 
     this.unionData();
-   
-// update data 
-this.activateRoute.paramMap.subscribe((param)=>{
-  this.slug=param.get('slug');
-// console.log('param', {this.slug} )
-  if(this.slug){ 
-    this.getInstDataBySlug(this.slug);
-  } else {
-    this.cattData();
-  }
-})
 
+    // update data
+    this.activateRoute.paramMap.subscribe((param) => {
+      this.slug = param.get('slug');
+      // console.log('param', this.slug )
+      if (this.slug) {
+        this.getInstDataBySlug(this.slug);
+      } else {
+        this.cattData();
+      }
+    });
   }
 
   // instiutte create here
 
   intSubmit() {
     console.log(this.institutPost.value);
-    
-    if(this.getUpdateData){
+
+    if (this.getUpdateData) {
       this.instteUpdate(this.institutPost.value, this.getUpdateData.slug);
+      alert(' Data Update Successfull');
+    } else {
+      this.instService
+        .insttePost(this.institutPost.value)
+        .subscribe((result) => {
+          this.responceData = result;
+          console.log('responceData', this.responceData);
+
+          this.institutPost.reset();
+          alert(' Data Insert Successfull');
+        });
     }
-    else{
-      this.instService.insttePost(this.institutPost.value).subscribe((result) => {
-        this.responceData = result;
-        console.log('responceData', this.responceData);
-        
-        this.institutPost.reset();
-        alert(' Data Insert Successfull');
-      });
-    }
-   
-   
   }
 
   // union code chere
@@ -107,16 +106,16 @@ this.activateRoute.paramMap.subscribe((param)=>{
     this.instService.CatData(this.institutPost.value).subscribe({
       next: (result) => {
         this.catagoryData = result;
-        console.log(' this.catagoryData',  this.catagoryData);
-        
-        if(this.slug) {
- 
+        console.log(' this.catagoryData', this.catagoryData);
+
+        if (this.slug) {
           this.institutPost.patchValue({
             user_phone: this.getUpdateData.admin.phone,
-         
-            parent_category_id: this.catagoryData.find((f: { id: any; }) => f.id == this.getUpdateData.parent_category_id).slug,
-        
-          })
+
+            parent_category_id: this.catagoryData.find(
+              (f: { id: any }) => f.id == this.getUpdateData.parent_category_id
+            ).slug,
+          });
         }
       },
       error: (err) => {
@@ -130,39 +129,29 @@ this.activateRoute.paramMap.subscribe((param)=>{
       .SubCatData(this.institutPost.value, select.value)
       .subscribe((result) => {
         this.subCatagoryData = result;
-        console.log('subCatagoryData',this.subCatagoryData);
-        
+        console.log('subCatagoryData', this.subCatagoryData);
       });
   }
 
-  getInstDataBySlug(slug:any) {
-    this.instService.getInstDataBySlug(slug)
-      .subscribe((result) => {
-        this.getUpdateData = result;
-        console.log('get data', this.getUpdateData)
-        this.cattData();
-        this.setFormData();
-       
-       
-      });
-      
+  getInstDataBySlug(slug: any) {
+    this.instService.getInstDataBySlug(slug).subscribe((result) => {
+      this.getUpdateData = result;
+      console.log('get data', this.getUpdateData);
+      this.cattData();
+      this.setFormData();
+    });
   }
 
-  setFormData(){
-    this.institutPost.patchValue({
-      user_phone: this.getUpdateData.admin.phone,
-      // categories_id: this.subCatagoryData.find((f: { id: any; }) => f.id == this.getUpdateData.first_category_id).slug,
-      // categories_id: this.getUpdateData.first_category_id,
-    })
-    this.institutPost.patchValue(this.getUpdateData)
-    
+  setFormData() {
+    // this.institutPost.patchValue({
+    //   // user_phone: this.getUpdateData.admin.phone,
+    //   // categories_id: this.subCatagoryData.find((f: { id: any; }) => f.id == this.getUpdateData.first_category_id).slug,
+    //   // categories_id: this.getUpdateData.first_category_id,
+    // });
+    this.institutPost.patchValue(this.getUpdateData);
   }
 
-  instteUpdate(data:any, slug: any) {
-    this.instService.instteUpdate(data, slug)
-      .subscribe((result) => {
-       
-      });
+  instteUpdate(data: any, slug: any) {
+    this.instService.instteUpdate(data, slug).subscribe((result) => {});
   }
-  
 }

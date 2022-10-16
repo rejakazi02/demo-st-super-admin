@@ -49,6 +49,7 @@ import { InstituteAddComponent } from './institute-add/institute-add.component';
 import {MatSelectModule} from '@angular/material/select';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
+import {NgxPaginationModule} from 'ngx-pagination';
 @NgModule({
   imports: [
     CommonModule,
@@ -86,6 +87,7 @@ import {MatButtonModule} from '@angular/material/button';
     MatSelectModule,
     MatMenuModule,
     MatButtonModule,
+    NgxPaginationModule,
   ],
   declarations: [
 
