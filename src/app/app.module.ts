@@ -55,7 +55,7 @@ import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { ProfileComponent } from './containers/default-layout/profile/profile.component';
 import { FormsModule } from '@angular/forms';
 import { AdminComponent } from './admin/admin.component';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 
@@ -102,7 +102,8 @@ const APP_CONTAINERS = [
     MatIconModule,
     HttpClientModule,
     FormsModule,
-    MatMenuModule
+    MatMenuModule,
+    NgxPaginationModule,
 
   ],
   providers: [

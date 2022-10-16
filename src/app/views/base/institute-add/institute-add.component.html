@@ -18,7 +18,7 @@
             <!-- <select formControlName="instituteCat" cSelect id="inputState" (change)="getSubType(select)" #select> -->
             <select formControlName="parent_category_id" cSelect id="inputState11" (change)="getSubType(select)"
               #select>
-              <option>Choose...</option>
+              <!-- <option>Choose...</option> -->
               <!-- <option  *ngFor="let item of instituteData" [value]="item.instituteName">{{item.instituteName}}</option> -->
               <option *ngFor="let item of catagoryData" [value]="item.slug">
                 {{ item.name }}
@@ -31,7 +31,7 @@
           <c-col md="6" class="test">
             <label cLabel for="2">Institute sub type</label>
             <mat-form-field appearance="fill" cSelect id="inputState21" appearance="outline">
-              <mat-label>Choose...</mat-label>
+              <!-- <mat-label>Choose...</mat-label> -->
               <mat-select formControlName="categories_id" for [formControl]="toppings" multiple>
                 <mat-option *ngFor="let item of subCatagoryData" value="{{ item.id }}">{{ item.name }}</mat-option>
               </mat-select>

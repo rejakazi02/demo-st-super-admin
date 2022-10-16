@@ -37,6 +37,7 @@
     "jquery": "^3.6.1",
     "ng-multiselect-dropdown": "^1.0.0-beta.19",
     "ng-select2": "^1.4.1",
+    "ngx-pagination": "^6.0.2",
     "ngx-perfect-scrollbar": "^10.1.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.4.0",

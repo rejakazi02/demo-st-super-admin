@@ -110,15 +110,12 @@ this.activateRoute.paramMap.subscribe((param)=>{
         console.log(' this.catagoryData',  this.catagoryData);
         
         if(this.slug) {
-          const gg = this.catagoryData.find((f: { id: any; }) => f.id == this.getUpdateData.parent_category_id).slug
-          console.log('gg', gg);
-          
+ 
           this.institutPost.patchValue({
             user_phone: this.getUpdateData.admin.phone,
-            parent_category_id: 'degree',
-          
-            // categories_id: this.getUpdateData.first_category_id.map((f: { id: any; }) => f.id ),
-      
+         
+            parent_category_id: this.catagoryData.find((f: { id: any; }) => f.id == this.getUpdateData.parent_category_id).slug,
+        
           })
         }
       },
@@ -145,7 +142,7 @@ this.activateRoute.paramMap.subscribe((param)=>{
         console.log('get data', this.getUpdateData)
         this.cattData();
         this.setFormData();
-        this.cattData()
+       
        
       });
       
@@ -154,12 +151,11 @@ this.activateRoute.paramMap.subscribe((param)=>{
   setFormData(){
     this.institutPost.patchValue({
       user_phone: this.getUpdateData.admin.phone,
-      // parent_category_id: 'degree',
-    
-      // categories_id: this.getUpdateData.first_category_id.map((f: { id: any; }) => f.id ),
-
+      // categories_id: this.subCatagoryData.find((f: { id: any; }) => f.id == this.getUpdateData.first_category_id).slug,
+      // categories_id: this.getUpdateData.first_category_id,
     })
     this.institutPost.patchValue(this.getUpdateData)
+    
   }
 
   instteUpdate(data:any, slug: any) {
