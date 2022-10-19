@@ -1,8 +1,11 @@
 
-
+<div class="add-btn-div">
+  <a href="" routerLink="/base/instituteAdd">Add institute</a>
+</div>
 
 <section>
   <div class="table-main-area">
+   
       <div class="table">
           <div class="table-thead">
               <div class="table-row" >
@@ -30,7 +33,9 @@
               <button><mat-icon>delete</mat-icon></button> -->
               <button mat-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" class="action-Btn">
                 <!-- <mat-icon>more_vert</mat-icon> -->
-                Action
+                <span class="material-symbols-outlined">
+                  more_vert
+                  </span>
               </button>
               <mat-menu #menu="matMenu">
                 <!-- <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
@@ -43,8 +48,8 @@
                 <span> Edit </span>
               </button></a>
                 
-                <button (click)="deleteDataa(element.slug)" mat-menu-item>
-                  <mat-icon>delete</mat-icon>
+                <button (click)="deleteDataa(element.slug)" mat-menu-item class="deleteBtn">
+                  <span class="material-symbols-outlined"> delete</span>
                   <span>Delete</span>
                 </button>
       

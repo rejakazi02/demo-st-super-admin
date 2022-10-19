@@ -29,7 +29,7 @@ export class InstituteAddComponent implements OnInit {
 
   addInstite = new AddInstute();
 
-  toppings = new FormControl('');
+  // toppings = new FormControl('');
 
   constructor(
     private instService: InstituteAddService,

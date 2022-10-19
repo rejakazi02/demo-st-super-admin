@@ -32,7 +32,7 @@
             <label cLabel for="2">Institute sub type</label>
             <mat-form-field appearance="fill" cSelect id="inputState21" appearance="outline">
               <!-- <mat-label>Choose...</mat-label> -->
-              <mat-select formControlName="categories_id" for [formControl]="toppings" multiple>
+              <mat-select formControlName="categories_id" multiple>
                 <mat-option *ngFor="let item of subCatagoryData" value="{{ item.id }}">{{ item.name }}</mat-option>
               </mat-select>
             </mat-form-field>
@@ -133,3 +133,14 @@
     </c-card>
   </c-col>
 </c-row>
+
+
+
+<!-- <div class="input-area">
+  <input type="text">
+  <div class="select-item">
+    <ul>
+      <li>select</li>
+    </ul>
+  </div>
+</div> -->

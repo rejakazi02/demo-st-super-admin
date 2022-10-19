@@ -33,7 +33,7 @@ export class InstituteListComponent implements OnInit, AfterViewInit {
   dataSource = [];
  
 
-  // MatPaginator Inputs
+  // Paginator Inputs
   current_page: any=1;
   last_page_number:any;
   itemPer_page: any = 2;
