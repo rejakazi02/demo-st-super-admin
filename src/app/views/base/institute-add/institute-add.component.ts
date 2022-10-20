@@ -26,6 +26,8 @@ export class InstituteAddComponent implements OnInit {
   subCatagoryData: any;
   slug?: any;
   getUpdateData: any;
+  storeSelectValue:any = '';  
+  isvalid:boolean = false;
 
   addInstite = new AddInstute();
 
@@ -65,6 +67,29 @@ export class InstituteAddComponent implements OnInit {
       }
     });
   }
+
+
+
+
+
+onUnionHide(){
+  this.isvalid = false;
+}
+onUnoin(){
+  this.isvalid=true;
+}
+
+
+getUnionSelectValue(data: any, evt:Event){
+  evt.preventDefault();
+
+  this.storeSelectValue = data;
+  console.log("value", this.storeSelectValue);
+}
+
+
+
+
 
   // instiutte create here
 

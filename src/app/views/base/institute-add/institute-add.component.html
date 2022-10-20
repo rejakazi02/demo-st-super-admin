@@ -46,7 +46,7 @@
               <option value="private">Private</option>
             </select>
           </c-col>
-
+<!-- 
           <c-col md="6">
             <label cLabel for="inputState4">Union Name</label>
             <select formControlName="union_id" cSelect id="inputState333">
@@ -55,6 +55,20 @@
                 {{ item.name }}
               </option>
             </select>
+          </c-col> -->
+
+
+          <c-col md="6">
+            <label cLabel for="inputState4">Union Name</label>
+            <div class="input-area" (blur)="onUnionHide()">
+              <input type="text" cFormControl (focus)="onUnoin()" [value]="storeSelectValue"> 
+              <div *ngIf="isvalid" class="select-item">
+                <ul>
+                  <li  *ngFor="let item of unionName" value="{{ item.id }}" (click)="getUnionSelectValue(item.name, $event)" > {{ item.name }}</li>
+                 
+                </ul>
+              </div>
+            </div>
           </c-col>
 
           <c-col md="6">
@@ -85,50 +99,7 @@
           </c-col>
         </form>
 
-        <!-- <app-docs-example href="">
-          <form cForm class="row g-3">
-            <c-col md="6">
-              <label cLabel for="inputEmail4">Email</label>
-              <input cFormControl id="inputEmail4" type="email" />
-            </c-col>
-            <c-col md="6">
-              <label cLabel for="inputPassword4">Password</label>
-              <input cFormControl id="inputPassword4" type="password" />
-            </c-col>
-            <c-col xs="12">
-              <label cLabel for="inputAddress">Address</label>
-              <input cFormControl id="inputAddress" placeholder="1234 Main St" />
-            </c-col>
-            <c-col xs="12">
-              <label cLabel for="inputAddress2">Address 2</label>
-              <input cFormControl id="inputAddress2" placeholder="Apartment, studio, or floor" />
-            </c-col>
-            <c-col md="6">
-              <label cLabel for="inputCity">City</label>
-              <input cFormControl id="inputCity" />
-            </c-col>
-            <c-col md="4">
-              <label cLabel for="inputState">State</label>
-              <select cSelect id="inputState">
-                <option>Choose...</option>
-                <option>...</option>
-              </select>
-            </c-col>
-            <c-col md="2">
-              <label cLabel for="inputZip">Zip</label>
-              <input cFormControl id="inputZip" />
-            </c-col>
-            <c-col xs="12">
-              <c-form-check>
-                <input cFormCheckInput id="gridCheck" name="gridCheck" type="checkbox" />
-                <label cFormCheckLabel for="gridCheck">Check me out</label>
-              </c-form-check>
-            </c-col>
-            <c-col xs="12">
-              <button cButton type="submit">Sign in</button>
-            </c-col>
-          </form>
-        </app-docs-example> -->
+      
       </c-card-body>
     </c-card>
   </c-col>
