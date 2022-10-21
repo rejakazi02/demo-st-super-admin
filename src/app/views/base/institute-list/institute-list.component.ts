@@ -11,6 +11,7 @@ import {
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-institute-list',
@@ -90,12 +91,44 @@ onPageChanged(e:number){
 }
 
 // institute delete data function 
-  deleteDataa(slug: string) {
-    this.insService.deleteData(slug).subscribe((result) => {
-      window.location.reload();
-      alert(' Data Delete Successfull');
+  // deleteDataa(slug: string) {
+  //   this.insService.deleteData(slug).subscribe((result) => {
+  //     // window.location.reload();
+  //     // alert(' Data Delete Successfull');
+  //   });
+  //   this. instList();
+  // }
+
+// institute delete data function 
+  confirmBox(slug: string) {
+    Swal.fire({
+      title: 'Are you sure want to remove?',
+      text: 'You will not be able to recover this file!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it',
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire(
+          'Deleted!',
+          'Your imaginary file has been deleted.',
+          'success'
+         
+        );
+        this.insService.deleteData(slug).subscribe((result) => {
+          // window.location.reload();
+          // alert(' Data Delete Successfull');
+        });
+        this. instList();
+        
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire('Cancelled', 'Your imaginary file is safe :)', 'error');
+      }
     });
   }
+
+
 
 
 }

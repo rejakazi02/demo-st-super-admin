@@ -19,7 +19,7 @@ import { param } from 'jquery';
 export class InstituteAddComponent implements OnInit {
   responceData: any;
   institutPost!: FormGroup;
-  unionName: any;
+  unionName?: any[];
   undata: any;
   catagoryData: any;
   catagoryDataa: any;
@@ -28,6 +28,7 @@ export class InstituteAddComponent implements OnInit {
   getUpdateData: any;
   storeSelectValue:any = '';  
   isvalid:boolean = false;
+  searchValue: any;
 
   addInstite = new AddInstute();
 
@@ -81,13 +82,19 @@ onUnoin(){
 
 
 getUnionSelectValue(data: any, evt:Event){
+
   evt.preventDefault();
 
   this.storeSelectValue = data;
-  console.log("value", this.storeSelectValue);
+  console.log("valuessss", this.storeSelectValue);
+  this.isvalid=false;
 }
 
-
+getInputValue(inputData:any){
+ 
+  this.searchValue = inputData.value;
+  console.log("first", this.searchValue)
+}
 
 
 

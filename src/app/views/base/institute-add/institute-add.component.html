@@ -26,8 +26,6 @@
             </select>
           </c-col>
 
-        
-
           <c-col md="6" class="test">
             <label cLabel for="2">Institute sub type</label>
             <mat-form-field appearance="fill" cSelect id="inputState21" appearance="outline">
@@ -46,7 +44,7 @@
               <option value="private">Private</option>
             </select>
           </c-col>
-<!-- 
+          
           <c-col md="6">
             <label cLabel for="inputState4">Union Name</label>
             <select formControlName="union_id" cSelect id="inputState333">
@@ -55,21 +53,23 @@
                 {{ item.name }}
               </option>
             </select>
-          </c-col> -->
+          </c-col>
 
-
-          <c-col md="6">
+          <!-- <c-col md="6">
             <label cLabel for="inputState4">Union Name</label>
             <div class="input-area" (blur)="onUnionHide()">
-              <input type="text" cFormControl (focus)="onUnoin()" [value]="storeSelectValue"> 
+              <input type="text" formControlName="union_id" cFormControl (focus)="onUnoin()" value="" [value]="storeSelectValue" #inputBox
+                (keyup)="getInputValue(inputBox)" />
               <div *ngIf="isvalid" class="select-item">
                 <ul>
-                  <li  *ngFor="let item of unionName" value="{{ item.id }}" (click)="getUnionSelectValue(item.name, $event)" > {{ item.name }}</li>
-                 
+                  <li *ngFor="let item of unionName | unionFilter: searchValue" value="{{ item.id }}"
+                    (click)="getUnionSelectValue(item.name, $event)">
+                    {{ item.name }}
+                  </li>
                 </ul>
               </div>
             </div>
-          </c-col>
+          </c-col> -->
 
           <c-col md="6">
             <label cLabel for="inputEmail4">Email</label>
@@ -98,14 +98,10 @@
             <button cButton type="submit">Add Institute</button>
           </c-col>
         </form>
-
-      
       </c-card-body>
     </c-card>
   </c-col>
 </c-row>
-
-
 
 <!-- <div class="input-area">
   <input type="text">

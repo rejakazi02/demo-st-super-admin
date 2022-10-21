@@ -1,6 +1,8 @@
+
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {PipesModule} from '../../shared/pipes/pipes.module';
 
 
 // CoreUI Modules
@@ -26,7 +28,9 @@ import {
   TableModule,
   TabsModule,
   TooltipModule,
-  UtilitiesModule
+  UtilitiesModule,
+  
+ 
 } from '@coreui/angular';
 
 import { IconModule } from '@coreui/icons-angular';
@@ -88,6 +92,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     MatMenuModule,
     MatButtonModule,
     NgxPaginationModule,
+    PipesModule,
+    FormsModule,
   ],
   declarations: [
 
