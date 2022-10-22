@@ -101,7 +101,7 @@ getInputValue(inputData:any){
   // instiutte create here
 
   intSubmit() {
-    console.log(this.institutPost.value);
+    
 
     if (this.getUpdateData) {
       this.instteUpdate(this.institutPost.value, this.getUpdateData.slug);
@@ -111,7 +111,7 @@ getInputValue(inputData:any){
         .insttePost(this.institutPost.value)
         .subscribe((result) => {
           this.responceData = result;
-          console.log('responceData', this.responceData);
+         
 
           this.institutPost.reset();
           alert(' Data Insert Successfull');
@@ -138,7 +138,7 @@ getInputValue(inputData:any){
     this.instService.CatData(this.institutPost.value).subscribe({
       next: (result) => {
         this.catagoryData = result;
-        console.log(' this.catagoryData', this.catagoryData);
+       
 
         if (this.slug) {
           this.institutPost.patchValue({
@@ -161,14 +161,14 @@ getInputValue(inputData:any){
       .SubCatData(this.institutPost.value, select.value)
       .subscribe((result) => {
         this.subCatagoryData = result;
-        console.log('subCatagoryData', this.subCatagoryData);
+       
       });
   }
 
   getInstDataBySlug(slug: any) {
     this.instService.getInstDataBySlug(slug).subscribe((result) => {
       this.getUpdateData = result;
-      console.log('get data', this.getUpdateData);
+     
       this.cattData();
       this.setFormData();
     });

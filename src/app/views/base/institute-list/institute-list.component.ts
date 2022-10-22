@@ -65,7 +65,7 @@ export class InstituteListComponent implements OnInit, AfterViewInit {
   instList() {
     this.insService.instituteList().subscribe((result) => {
       this.instData = result;
-      console.log('instData', this.instData);
+      // console.log('instData', this.instData);
       this.dataSource = this.instData.institutes.data;
 
       // this.length = this.instData.institutes.meta.total;
@@ -79,7 +79,7 @@ export class InstituteListComponent implements OnInit, AfterViewInit {
       // this.pageSizeOptions = this.instData.institutes.links.next;
       // console.log(this.pageSizeOptions);
 
-      console.log('this.dataSource', this.dataSource);
+      // console.log('this.dataSource', this.dataSource);
     });
   }
 
@@ -119,8 +119,9 @@ onPageChanged(e:number){
         this.insService.deleteData(slug).subscribe((result) => {
           // window.location.reload();
           // alert(' Data Delete Successfull');
+          this. instList();
         });
-        this. instList();
+       
         
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire('Cancelled', 'Your imaginary file is safe :)', 'error');

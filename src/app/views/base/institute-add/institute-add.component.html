@@ -28,9 +28,9 @@
 
           <c-col md="6" class="test">
             <label cLabel for="2">Institute sub type</label>
-            <mat-form-field appearance="fill" cSelect id="inputState21" appearance="outline">
+            <mat-form-field appearance="fill" cSelect id="inputState21" appearance="outline" class="insSub-mat-form-field">
               <!-- <mat-label>Choose...</mat-label> -->
-              <mat-select formControlName="categories_id" multiple>
+              <mat-select class="inst-mat-select"  formControlName="categories_id" multiple>
                 <mat-option *ngFor="let item of subCatagoryData" value="{{ item.id }}">{{ item.name }}</mat-option>
               </mat-select>
             </mat-form-field>
