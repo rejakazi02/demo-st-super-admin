@@ -29,6 +29,7 @@ export class InstituteAddComponent implements OnInit {
   storeSelectValue:any = '';  
   isvalid:boolean = false;
   searchValue: any;
+  errorMessage: any;
 
   addInstite = new AddInstute();
 
@@ -105,7 +106,7 @@ getInputValue(inputData:any){
 
     if (this.getUpdateData) {
       this.instteUpdate(this.institutPost.value, this.getUpdateData.slug);
-      alert(' Data Update Successfull');
+     
     } else {
       this.instService
         .insttePost(this.institutPost.value)
@@ -114,8 +115,15 @@ getInputValue(inputData:any){
          
 
           this.institutPost.reset();
-          alert(' Data Insert Successfull');
-        });
+          alert(result.message);
+          this.errorMessage=null;
+        },
+        (err)=>{
+          this.errorMessage=err.error.errors;
+          console.log("errors",err.error.errors)
+          // alert(err.error.message)
+        }
+        );
     }
   }
 
@@ -184,6 +192,16 @@ getInputValue(inputData:any){
   }
 
   instteUpdate(data: any, slug: any) {
-    this.instService.instteUpdate(data, slug).subscribe((result) => {});
+    this.instService.instteUpdate(data, slug).subscribe((result) => {
+
+      this.institutPost.reset();
+      alert(result.message);
+      this.errorMessage=null;
+        },
+        (err)=>{
+          this.errorMessage=err.error.errors;
+          console.log("errors",err.error.errors)
+          // alert(err.error.message)
+        });
   }
 }
