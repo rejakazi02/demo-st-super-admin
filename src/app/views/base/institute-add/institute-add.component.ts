@@ -173,6 +173,9 @@ getInputValue(inputData:any){
       });
   }
 
+
+  // institute update data 
+
   getInstDataBySlug(slug: any) {
     this.instService.getInstDataBySlug(slug).subscribe((result) => {
       this.getUpdateData = result;
