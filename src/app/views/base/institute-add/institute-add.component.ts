@@ -10,6 +10,8 @@ import {
 import { InstituteAddService } from './../../../service/institute-add.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { param } from 'jquery';
+import { MatSelectChange } from '@angular/material/select';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-institute-add',
@@ -20,6 +22,7 @@ export class InstituteAddComponent implements OnInit {
   responceData: any;
   institutPost!: FormGroup;
   unionName?: any[];
+  filteredUnionList?: any[];
   undata: any;
   catagoryData: any;
   catagoryDataa: any;
@@ -134,6 +137,9 @@ getInputValue(inputData:any){
       next: (result) => {
         this.undata = result;
         this.unionName = this.undata.data;
+        console.log("union", this.unionName);
+        
+        this.filteredUnionList = this.unionName?.slice();
       },
       error: (err) => {
         console.log(err);
@@ -207,4 +213,6 @@ getInputValue(inputData:any){
           // alert(err.error.message)
         });
   }
+
+
 }

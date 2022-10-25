@@ -37,11 +37,10 @@ export class InstituteListComponent implements OnInit, AfterViewInit {
   // Paginator Inputs
   current_page: any=1;
   last_page_number:any;
-  itemPer_page: any = 2;
+  itemPer_page: any = 3;
   totalpage:any;
 
-  // MatPaginator Output
-  pageEvent: PageEvent;
+  
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -53,13 +52,7 @@ export class InstituteListComponent implements OnInit, AfterViewInit {
     this.instList();
   }
 
-  // setPageSizeOptions(setPageSizeOptionsInput: string) {
-  //   if (setPageSizeOptionsInput) {
-  //     this.pageSizeOptions = setPageSizeOptionsInput
-  //       .split(',')
-  //       .map((str) => +str);
-  //   }
-  // }
+ 
 
   // get institute list data
   instList() {
@@ -67,37 +60,19 @@ export class InstituteListComponent implements OnInit, AfterViewInit {
       this.instData = result;
       // console.log('instData', this.instData);
       this.dataSource = this.instData.institutes.data;
-
-      // this.length = this.instData.institutes.meta.total;
-      // this.pageSize = this.instData.institutes.meta.per_page;
-      // this.pageSizeOptions = this.instData.institutes.meta.per_page;
-      // console.log('this.dataSource',this.dataSource);
-
-      // this.length = this.instData.institutes.meta.total;
-      // this.pageSize = this.instData.institutes.links.next;
-      // console.log(this.pageSize);
-      // this.pageSizeOptions = this.instData.institutes.links.next;
-      // console.log(this.pageSizeOptions);
-
-      // console.log('this.dataSource', this.dataSource);
     });
   }
 
-  onPageChangeEvent(event: any) {}
+  
 
-// paiganation 
+// paiganation
+ onPageChangeEvent(event: any) {}
+ 
 onPageChanged(e:number){
   this.current_page = e;
 }
 
-// institute delete data function 
-  // deleteDataa(slug: string) {
-  //   this.insService.deleteData(slug).subscribe((result) => {
-  //     // window.location.reload();
-  //     // alert(' Data Delete Successfull');
-  //   });
-  //   this. instList();
-  // }
+
 
 // institute delete data function 
   confirmBox(slug: string) {

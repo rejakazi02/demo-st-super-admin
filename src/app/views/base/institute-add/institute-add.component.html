@@ -50,8 +50,14 @@
             </select>
             <p class="validation-Message" *ngIf="errorMessage && errorMessage.type && errorMessage.type.length">{{errorMessage.type[0]}}</p>
           </c-col>
+
+
+
+
+
+
           
-          <c-col md="6">
+          <!-- <c-col md="6">
             <label cLabel for="inputState4">Union Name</label>
             <select formControlName="union_id" cSelect id="inputState333">
               <option>Choose...</option>
@@ -60,7 +66,42 @@
               </option>
             </select>
             <p class="validation-Message" *ngIf="errorMessage && errorMessage.union_id && errorMessage.union_id.length">{{errorMessage.union_id[0]}}</p>
-          </c-col>
+          </c-col> -->
+          
+            
+            
+            <c-col md="6">
+            <label cLabel for="inputState4">Union Name</label>
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-select [disableOptionCentering]="true" #select placeholder="Select Union *"
+                          formControlName="union_id">
+                <mat-select-filter [placeholder]="'Search Union'"
+                                   *ngIf="select.focus"
+                                   [array]="unionName"
+                                   [displayMember]="'name'"
+                                   (filteredReturn)="filteredUnionList = $event">
+                </mat-select-filter>
+                <mat-option *ngFor="let item of filteredUnionList" [value]="item.id">
+                  {{item.name}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="">This field is required</mat-error>
+            </mat-form-field>
+            <p class="validation-Message" *ngIf="errorMessage && errorMessage.union_id && errorMessage.union_id.length">{{errorMessage.union_id[0]}}</p>
+          </c-col> 
+
+       
+
+
+
+
+
+
+
+
+
+
+
 
           <!-- <c-col md="6">
             <label cLabel for="inputState4">Union Name</label>

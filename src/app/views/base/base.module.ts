@@ -54,6 +54,9 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import {NgxPaginationModule} from 'ngx-pagination';
+
+import { MatSelectFilterModule } from 'mat-select-filter';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -94,6 +97,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     NgxPaginationModule,
     PipesModule,
     FormsModule,
+    MatSelectFilterModule,
   ],
   declarations: [
 
