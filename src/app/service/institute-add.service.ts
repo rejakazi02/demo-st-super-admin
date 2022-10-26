@@ -4,6 +4,7 @@ import {
   HttpClient,
   HttpErrorResponse,
   HttpHeaders,
+  HttpParams,
 } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { tap, switchMap } from 'rxjs/operators';
@@ -22,9 +23,13 @@ export class InstituteAddService {
     return this.http.post<any>(baseurl + 'admin/institutes', signUpPayload);
   }
 
-  instituteList() {
+  instituteList(page: any) {
+    let params = new HttpParams();
+    if(page) {
+      params = params.append('page', page);
+    }
     // return this.http.get<any>(baseurl + 'admin/institutes')
-    return this.http.get(baseurl + 'admin/institutes');
+    return this.http.get(baseurl + 'admin/institutes', {params});
   }
 
   IsLoggedIn() {

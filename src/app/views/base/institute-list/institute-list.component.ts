@@ -37,8 +37,9 @@ export class InstituteListComponent implements OnInit, AfterViewInit {
   // Paginator Inputs
   current_page: any=1;
   last_page_number:any;
-  itemPer_page: any = 3;
+  itemPer_page: any = 0;
   totalpage:any;
+  total: number = 0;
 
   
 
@@ -56,10 +57,15 @@ export class InstituteListComponent implements OnInit, AfterViewInit {
 
   // get institute list data
   instList() {
-    this.insService.instituteList().subscribe((result) => {
+    this.insService.instituteList(this.current_page).subscribe((result) => {
       this.instData = result;
-      // console.log('instData', this.instData);
+      console.log('instData', this.instData);
       this.dataSource = this.instData.institutes.data;
+      this.total = this.instData.institutes.meta.total;
+      this.itemPer_page = this.instData.institutes.meta.per_page;
+
+      console.log('this.total', this.total);
+      
     });
   }
 
@@ -70,6 +76,7 @@ export class InstituteListComponent implements OnInit, AfterViewInit {
  
 onPageChanged(e:number){
   this.current_page = e;
+  this.instList()
 }
 
 
