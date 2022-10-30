@@ -56,6 +56,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {NgxPaginationModule} from 'ngx-pagination';
 
 import { MatSelectFilterModule } from 'mat-select-filter';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   imports: [
@@ -98,6 +99,7 @@ import { MatSelectFilterModule } from 'mat-select-filter';
     PipesModule,
     FormsModule,
     MatSelectFilterModule,
+    ToastrModule,
   ],
   declarations: [
 

@@ -59,12 +59,12 @@ export class InstituteListComponent implements OnInit, AfterViewInit {
   instList() {
     this.insService.instituteList(this.current_page).subscribe((result) => {
       this.instData = result;
-      console.log('instData', this.instData);
+      // console.log('instData', this.instData);
       this.dataSource = this.instData.institutes.data;
       this.total = this.instData.institutes.meta.total;
       this.itemPer_page = this.instData.institutes.meta.per_page;
 
-      console.log('this.total', this.total);
+      // console.log('this.total', this.total);
       
     });
   }
@@ -101,6 +101,7 @@ onPageChanged(e:number){
         this.insService.deleteData(slug).subscribe((result) => {
           // window.location.reload();
           // alert(' Data Delete Successfull');
+          
           this. instList();
         });
        

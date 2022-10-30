@@ -3,6 +3,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 // import { AuthService } from './../../service/auth.service';
 // import value from './../../../declarations.d';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../service/auth.service';
 
 @Component({
@@ -13,10 +14,12 @@ import { AuthService } from '../../service/auth.service';
 export class LoginComponent implements OnInit {
   responceData: any;
   logInForm!: FormGroup;
+  errorMessage:any;
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private route: Router
+    private route: Router,
+    private toastr: ToastrService,
   ) {}
   ngOnInit(): void {
     // throw new Error('Method not implemented.');
@@ -26,7 +29,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  logIn() {
+  onlogIn() {
     // console.log(this.logInForm.value);
     if (this.logInForm.valid) {
       this.authService
@@ -39,7 +42,16 @@ export class LoginComponent implements OnInit {
 
             this.route.navigate(['/', 'dashboard']);
 
-            alert('Login Successfull');
+            this.toastr.success(result.message);
+          }
+        },
+        (err)=>{
+          this.errorMessage=err.error.errors;
+          if(err.error.errors.email){
+            this.toastr.error(err.error.errors.email);
+          }
+          if(err.error.errors.password){
+            this.toastr.error(err.error.errors.password);
           }
         });
     }

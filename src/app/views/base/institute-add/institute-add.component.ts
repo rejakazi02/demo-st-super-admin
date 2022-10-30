@@ -12,6 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { param } from 'jquery';
 import { MatSelectChange } from '@angular/material/select';
 import Swal from 'sweetalert2';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-institute-add',
@@ -43,7 +44,8 @@ export class InstituteAddComponent implements OnInit {
     private fb: FormBuilder,
 
     private route: Router,
-    private activateRoute: ActivatedRoute
+    private activateRoute: ActivatedRoute,
+    private toastr: ToastrService,
   ) {}
 
   ngOnInit(): void {
@@ -77,31 +79,6 @@ export class InstituteAddComponent implements OnInit {
 
 
 
-onUnionHide(){
-  this.isvalid = false;
-}
-onUnoin(){
-  this.isvalid=true;
-}
-
-
-getUnionSelectValue(data: any, evt:Event){
-
-  evt.preventDefault();
-
-  this.storeSelectValue = data;
-  console.log("valuessss", this.storeSelectValue);
-  this.isvalid=false;
-}
-
-getInputValue(inputData:any){
- 
-  this.searchValue = inputData.value;
-  console.log("first", this.searchValue)
-}
-
-
-
   // instiutte create here
 
   intSubmit() {
@@ -118,13 +95,40 @@ getInputValue(inputData:any){
          
 
           this.institutPost.reset();
-          alert(result.message);
+        
+          this.toastr.success(result.message);
           this.errorMessage=null;
         },
         (err)=>{
           this.errorMessage=err.error.errors;
-          console.log("errors",err.error.errors)
-          // alert(err.error.message)
+
+        if (err.error.errors.name) {
+          this.toastr.error(err.error.errors.name);
+        }
+        if (err.error.errors.eiin) {
+          this.toastr.error(err.error.errors.eiin);
+        }
+        if (err.error.errors. parent_category_id) {
+          this.toastr.error(err.error.errors. parent_category_id);
+        }
+        if (err.error.errors.slug) {
+          this.toastr.error(err.error.errors.slug);
+        }
+        if (err.error.errors.type) {
+          this.toastr.error(err.error.errors.type);
+        }
+        if (err.error.errors.union_id) {
+          this.toastr.error(err.error.errors.union_id);
+        }
+        if (err.error.errors.user_name) {
+          this.toastr.error(err.error.errors.user_name);
+        }
+        if (err.error.errors.user_phone) {
+          this.toastr.error(err.error.errors.user_phone);
+        }
+        if (err.error.errors.password) {
+          this.toastr.error(err.error.errors.password);
+        }
         }
         );
     }
@@ -137,12 +141,12 @@ getInputValue(inputData:any){
       next: (result) => {
         this.undata = result;
         this.unionName = this.undata.data;
-        console.log("union", this.unionName);
+        // console.log("union", this.unionName);
         
         this.filteredUnionList = this.unionName?.slice();
       },
       error: (err) => {
-        console.log(err);
+        // console.log(err);
       },
     });
   }
@@ -165,7 +169,7 @@ getInputValue(inputData:any){
         }
       },
       error: (err) => {
-        console.log(err);
+        // console.log(err);
       },
     });
   }
@@ -204,7 +208,7 @@ getInputValue(inputData:any){
     this.instService.instteUpdate(data, slug).subscribe((result) => {
 
       this.institutPost.reset();
-      alert(result.message);
+      this.toastr.success(result.message);
       this.errorMessage=null;
         },
         (err)=>{

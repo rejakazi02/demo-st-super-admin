@@ -56,6 +56,7 @@ import { ProfileComponent } from './containers/default-layout/profile/profile.co
 import { FormsModule } from '@angular/forms';
 import { AdminComponent } from './admin/admin.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -104,6 +105,7 @@ const APP_CONTAINERS = [
     FormsModule,
     MatMenuModule,
     NgxPaginationModule,
+    ToastrModule.forRoot(),
 
   ],
   providers: [

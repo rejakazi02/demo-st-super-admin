@@ -14,7 +14,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^14.2.0",
+    "@angular/animations": "^14.2.8",
     "@angular/cdk": "^14.2.1",
     "@angular/common": "^14.2.0",
     "@angular/compiler": "^14.2.0",
@@ -40,6 +40,7 @@
     "ng-select2": "^1.4.1",
     "ngx-pagination": "^6.0.2",
     "ngx-perfect-scrollbar": "^10.1.1",
+    "ngx-toastr": "^15.2.1",
     "rxjs": "~7.5.0",
     "sweetalert2": "^11.6.2",
     "tslib": "^2.4.0",
