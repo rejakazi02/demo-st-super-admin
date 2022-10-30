@@ -21,7 +21,7 @@
               </div>
           </div>
           <div class="tbody">
-            <div *ngFor="let element of instData.institutes.data | paginate: { itemsPerPage: itemPer_page, currentPage: current_page, totalItems: total }" class="table-row" >
+            <div *ngFor="let element of instData?.institutes.data | paginate: { itemsPerPage: itemPer_page, currentPage: current_page, totalItems: total }" class="table-row" >
                <div class="table-data">{{element.institute_name}}</div>
                <div class="table-data">{{ element.eiin }}</div>
                <div class="table-data"> {{ element.parent_category }}</div>
@@ -64,7 +64,7 @@
           </div>
        </div>
        <div class="pagination-div">
-        <pagination-controls (pageChange)="onPageChanged($event)" [maxSize]="15"></pagination-controls>
+        <pagination-controls (pageChange)="onPageChanged($event)" [maxSize]="8"></pagination-controls>
        </div>
   </div>
 </section>
