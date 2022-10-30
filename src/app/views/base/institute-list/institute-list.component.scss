@@ -1,9 +1,9 @@
-
-.add-btn-div{
+.add-btn-div {
   display: flex;
   align-items: center;
   justify-content: end;
-  a{
+
+  a {
     background-color: white;
     color: black;
     padding: 14px 20px;
@@ -14,17 +14,12 @@
   }
 }
 
-
-
-
-
-
-
 .table-main-area {
   background-color: white;
-padding: 30px 20px;
-border-radius: 5px;
-margin: 30px 0;
+  padding: 30px 20px;
+  border-radius: 5px;
+  margin: 30px 0;
+
   .table {
     .table-thead {
       background-color: rgb(15, 148, 201);
@@ -37,34 +32,139 @@ margin: 30px 0;
         justify-content: space-between;
 
         .table-heading {
-            width: 100%;
-            font-weight: 500;
-            font-size: 16px;
-        //  min-width: 200px;
-        //   padding: 13px 4%;
+          width: 100%;
+          font-weight: 500;
+          font-size: 16px;
+          //  min-width: 200px;
+          //   padding: 13px 4%;
         }
       }
-    } 
+    }
 
     .tbody {
-      
       text-align: center;
+
       .table-row {
         display: flex;
         align-items: center;
         justify-content: space-between;
         border-bottom: 2px solid rgb(112, 111, 110);
+
         .table-data {
+          width: 100%;
+          // min-width: 200px;
+          // padding: 13px 4%;
+
+          button {
+            border: none;
+            background-color: white;
+          }
+
+          .action-Btn {
+            // background-color: blue;
+            // color: white;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 9px 33px;
+            border-radius: 5px;
+          }
+
+          .deleteBtn {
+            display: flex !important;
+            align-items: center !important;
+            gap: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  .pagination-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  }
+}
+
+.button-atag {
+  text-decoration: none;
+}
+
+// ::ng .ngx-pagination a{
+//   text-decoration: none !important;
+
+// }
+
+.deleteBtn {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px;
+}
+
+.no-Data-text{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10%;
+  font-size: 30px;
+  color: brown;
+  font-weight: 600;
+}
+
+@media (min-width: 300px) and (max-width: 400px) {
+  .table-main-area {
+    background-color: white;
+    padding: 30px 20px;
+    border-radius: 5px;
+    margin: 30px 0;
+
+    .table {
+      overflow-x: scroll;
+      width: 100%;
+
+      .table-thead {
+        background-color: rgb(15, 148, 201);
+        color: white;
+
+        width: 200vw;
+        text-align: center;
+
+        .table-row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .table-heading {
             width: 100%;
+            font-weight: 500;
+            font-size: 16px;
+          }
+        }
+      }
+
+      .tbody {
+        width: 203vw;
+        text-align: center;
+
+        .table-row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          border-bottom: 2px solid rgb(112, 111, 110);
+          width: 100%;
+
+          .table-data {
+            width: 100%;
+
             // min-width: 200px;
             // padding: 13px 4%;
-
 
             button {
               border: none;
               background-color: white;
             }
-  
+
             .action-Btn {
               // background-color: blue;
               // color: white;
@@ -74,132 +174,21 @@ margin: 30px 0;
               border-radius: 5px;
             }
 
-            .deleteBtn{
+            .deleteBtn {
               display: flex !important;
               align-items: center !important;
               gap: 10px;
             }
+          }
         }
       }
     }
-  }
 
-
-  .pagination-div{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
+    .pagination-div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
   }
 }
-
-
-.button-atag{
-  text-decoration: none;
-}
-
-// ::ng .ngx-pagination a{
-//   text-decoration: none !important;
- 
-// }
-
-
-
-.deleteBtn{
-              display: flex !important;
-              align-items: center !important;
-              gap: 10px;
-            }
-
-
-
-
-
-            @media (min-width: 300px) and (max-width: 400px) {
-
-              .table-main-area {
-                background-color: white;
-              padding: 30px 20px;
-              border-radius: 5px;
-              margin: 30px 0;
-                .table {
-
-                  overflow-x: scroll;
-                  width: 100%;
-                  .table-thead {
-                    background-color: rgb(15, 148, 201);
-                    color: white;
-                 
-                    width: 200vw;
-                    text-align: center;
-              
-                    .table-row {
-                      display: flex;
-                      align-items: center;
-                      justify-content: space-between;
-              
-                      .table-heading {
-                          width: 100%;
-                          font-weight: 500;
-                          font-size: 16px;
-                       
-                      
-                      }
-                    }
-                  } 
-              
-                  .tbody {
-                
-                    width: 203vw;
-              text-align: center;
-                    .table-row {
-                      display: flex;
-                      align-items: center;
-                      justify-content: space-between;
-                      border-bottom: 2px solid rgb(112, 111, 110);
-                      width: 100%;
-                      .table-data {
-                          width: 100%;
-                          
-                          // min-width: 200px;
-                          // padding: 13px 4%;
-              
-              
-                          button {
-                            border: none;
-                            background-color: white;
-                          }
-                
-                          .action-Btn {
-                            // background-color: blue;
-                            // color: white;
-                            font-size: 16px;
-                            font-weight: 500;
-                            padding: 9px 33px;
-                            border-radius: 5px;
-                          }
-              
-                          .deleteBtn{
-                            display: flex !important;
-                            align-items: center !important;
-                            gap: 10px;
-                          }
-                      }
-                    }
-                  }
-                }
-              
-              
-                .pagination-div{
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  text-decoration: none;
-                }
-              }
-
-            }
-
-
-
-

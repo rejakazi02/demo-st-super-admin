@@ -1,70 +1,91 @@
-
 <div class="add-btn-div">
   <a href="" routerLink="/base/instituteAdd">Add institute</a>
 </div>
 
 <section>
-  <div class="table-main-area">
-   
-      <div class="table">
-          <div class="table-thead">
-              <div class="table-row" >
-                  <div class="table-heading">Name</div>
-                  <div class="table-heading">EIIN</div>
-                  <div class="table-heading">Parent Category</div>
-                  <div class="table-heading">Type</div>
-                  <div class="table-heading">Union</div>
-                  <div class="table-heading">Phone</div>
-                  
-                  <div class="table-heading">Action</div>
-                
-              </div>
-          </div>
-          <div class="tbody">
-            <div *ngFor="let element of instData?.institutes.data | paginate: { itemsPerPage: itemPer_page, currentPage: current_page, totalItems: total }" class="table-row" >
-               <div class="table-data">{{element.institute_name}}</div>
-               <div class="table-data">{{ element.eiin }}</div>
-               <div class="table-data"> {{ element.parent_category }}</div>
-               <div class="table-data">{{ element.type }}</div>
-               <div class="table-data">{{ element.union }}</div>
-               <div class="table-data">{{ element.admin_info.phone }}</div>
-               <div class="table-data">
-              <!-- <button><a href="" routerLink="/class/classAdd"><mat-icon>edit</mat-icon></a></button>
+  <div class="table-main-area" *ngIf="instData?.institutes.data.length">
+    <div class="table">
+      <div class="table-thead">
+        <div class="table-row">
+          <div class="table-heading">Name</div>
+          <div class="table-heading">EIIN</div>
+          <div class="table-heading">Parent Category</div>
+          <div class="table-heading">Type</div>
+          <div class="table-heading">Union</div>
+          <div class="table-heading">Phone</div>
+
+          <div class="table-heading">Action</div>
+        </div>
+      </div>
+      <div class="tbody">
+        <div
+          *ngFor="
+            let element of instData?.institutes.data
+              | paginate
+                : {
+                    itemsPerPage: itemPer_page,
+                    currentPage: current_page,
+                    totalItems: total
+                  }
+          "
+          class="table-row"
+        >
+          <div class="table-data">{{ element.institute_name }}</div>
+          <div class="table-data">{{ element.eiin }}</div>
+          <div class="table-data">{{ element.parent_category }}</div>
+          <div class="table-data">{{ element.type }}</div>
+          <div class="table-data">{{ element.union }}</div>
+          <div class="table-data">{{ element.admin_info.phone }}</div>
+          <div class="table-data">
+            <!-- <button><a href="" routerLink="/class/classAdd"><mat-icon>edit</mat-icon></a></button>
               <button><mat-icon>delete</mat-icon></button> -->
-              <button mat-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" class="action-Btn">
-                <!-- <mat-icon>more_vert</mat-icon> -->
-                <span class="material-symbols-outlined">
-                  more_vert
-                  </span>
-              </button>
-              <mat-menu #menu="matMenu">
-                <!-- <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+            <button
+              mat-button
+              [matMenuTriggerFor]="menu"
+              aria-label="Example icon-button with a menu"
+              class="action-Btn"
+            >
+              <!-- <mat-icon>more_vert</mat-icon> -->
+              <span class="material-symbols-outlined"> more_vert </span>
+            </button>
+            <mat-menu #menu="matMenu">
+              <!-- <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
                 <mat-icon>edit</mat-icon>
               </button> -->
               <!-- (click)="editDataa(element.slug, i)" -->
-              <a [routerLink]="['/base/instituteEdit', element.slug]" class="button-atag">
-                <button  mat-menu-item class="deleteBtn" >
+              <a
+                [routerLink]="['/base/instituteEdit', element.slug]"
+                class="button-atag"
+              >
+                <button mat-menu-item class="deleteBtn">
                   <span class="material-symbols-outlined"> edit </span>
-                <span> Edit </span>
-              </button></a>
-                
-                <button (click)="confirmBox(element.slug)"  mat-menu-item class="deleteBtn" >
-                  <span class="material-symbols-outlined"> delete</span>
-                  <span>Delete</span>
-                </button>
-      
-                <!-- (click)="deleteData(element.slug)" -->
-              </mat-menu>
-               </div> 
-            </div>
-           
-            
-           
-       
+                  <span> Edit </span>
+                </button></a
+              >
+
+              <button
+                (click)="confirmBox(element.slug)"
+                mat-menu-item
+                class="deleteBtn"
+              >
+                <span class="material-symbols-outlined"> delete</span>
+                <span>Delete</span>
+              </button>
+
+              <!-- (click)="deleteData(element.slug)" -->
+            </mat-menu>
           </div>
-       </div>
-       <div class="pagination-div">
-        <pagination-controls (pageChange)="onPageChanged($event)" [maxSize]="8"></pagination-controls>
-       </div>
+        </div>
+      </div>
+    </div>
+    <div class="pagination-div">
+      <pagination-controls
+        (pageChange)="onPageChanged($event)"
+        [maxSize]="8"
+      ></pagination-controls>
+    </div>
   </div>
+  <h3 *ngIf="!instData?.institutes.data.length" class="no-Data-text">
+    No data
+  </h3>
 </section>

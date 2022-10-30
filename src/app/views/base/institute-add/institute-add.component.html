@@ -32,7 +32,7 @@
           <c-col md="6" class="test">
             <label cLabel for="2">Institute sub type</label>
             <mat-form-field appearance="fill" cSelect id="inputState21" appearance="outline" class="insSub-mat-form-field">
-              <!-- <mat-label>Choose...</mat-label> -->
+              <mat-label>Select institute sub type</mat-label>
               <mat-select class="inst-mat-select"  formControlName="categories_id" multiple>
                 <mat-option *ngFor="let item of subCatagoryData" value="{{ item.id }}">{{ item.name }}</mat-option>
               </mat-select>
@@ -42,8 +42,8 @@
           </c-col>
 
           <c-col md="6">
-            <label cLabel for="inputState3">Institute Type</label>
-            <select formControlName="type" cSelect id="inputState33">
+            <label cLabel for="inlineFormSelectPref">Institute Type</label>
+            <select formControlName="type" cSelect id="inlineFormSelectPref" >
               <option>Choose...</option>
               <option value="government">Government</option>
               <option value="private">Private</option>
@@ -79,7 +79,7 @@
 
           <c-col md="6">
             <label cLabel for="inputEmail432">Email</label>
-            <input formControlName="user_name" cFormControl id="inputEmail432" type="email" />
+            <input formControlName="user_name" cFormControl id="inputEmail432" type="email" placeholder="Email"/>
             <p class="validation-Message" *ngIf="errorMessage && errorMessage.user_name && errorMessage.user_name.length">{{errorMessage.user_name[0]}}</p>
           </c-col>
           <c-col md="6">
@@ -87,12 +87,14 @@
             <input formControlName="password" cFormControl id="inputPassword41" type="password" />
             <p class="validation-Message" *ngIf="errorMessage && errorMessage.password && errorMessage.password.length">{{errorMessage.password[0]}}</p>
           </c-col>
+         
           <c-col md="6">
-            <label cLabel for="inputPassword44">Phone Number</label>
-            <input formControlName="user_phone" cFormControl id="inputPassword42" type="text"
-              placeholder="Phone Number" />
-              <p class="validation-Message" *ngIf="errorMessage && errorMessage.user_phone && errorMessage.user_phone.length">{{errorMessage.user_phone[0]}}</p>
+            <label cLabel for="inputPassword41">Phone Number</label>
+            <input formControlName="user_phone" cFormControl id="inputPassword41" type="text" placeholder="Phone Number" />
+            <p class="validation-Message" *ngIf="errorMessage && errorMessage.eiin && errorMessage.eiin.length">{{errorMessage.eiin[0]}}</p>
           </c-col>
+
+
           <c-col md="6">
             <label cLabel for="inputPassword4">EIIn Number</label>
             <input formControlName="eiin" cFormControl id="inputPassword43" type="number" placeholder="EIIn Number" />
