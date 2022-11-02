@@ -85,7 +85,9 @@
       ></pagination-controls>
     </div>
   </div>
-  <h3 *ngIf="!instData?.institutes.data.length" class="no-Data-text">
+  <!-- <h3 *ngIf="!instData?.institutes.data.length" class="no-Data-text">
     No data
-  </h3>
+  </h3> -->
+  <img *ngIf="!instData?.institutes.data.length"  class="no-Data-img" src="../../../../assets/img/no data/no-data-found.png" alt="">
+
 </section>
