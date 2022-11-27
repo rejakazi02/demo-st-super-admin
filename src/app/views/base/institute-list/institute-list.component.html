@@ -18,8 +18,7 @@
         </div>
       </div>
       <div class="tbody">
-        <div
-          *ngFor="
+        <div *ngFor="
             let element of instData?.institutes.data
               | paginate
                 : {
@@ -27,9 +26,7 @@
                     currentPage: current_page,
                     totalItems: total
                   }
-          "
-          class="table-row"
-        >
+          " class="table-row">
           <div class="table-data">{{ element.institute_name }}</div>
           <div class="table-data">{{ element.eiin }}</div>
           <div class="table-data">{{ element.parent_category }}</div>
@@ -39,12 +36,8 @@
           <div class="table-data">
             <!-- <button><a href="" routerLink="/class/classAdd"><mat-icon>edit</mat-icon></a></button>
               <button><mat-icon>delete</mat-icon></button> -->
-            <button
-              mat-button
-              [matMenuTriggerFor]="menu"
-              aria-label="Example icon-button with a menu"
-              class="action-Btn"
-            >
+            <button mat-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"
+              class="action-Btn">
               <!-- <mat-icon>more_vert</mat-icon> -->
               <span class="material-symbols-outlined"> more_vert </span>
             </button>
@@ -53,25 +46,13 @@
                 <mat-icon>edit</mat-icon>
               </button> -->
               <!-- (click)="editDataa(element.slug, i)" -->
-              <a
-                [routerLink]="['/base/instituteEdit', element.slug]"
-                class="button-atag"
-              >
+              <a [routerLink]="['/base/instituteEdit', element.slug]" class="button-atag">
                 <button mat-menu-item class="deleteBtn">
                   <span class="material-symbols-outlined"> edit </span>
                   <span> Edit </span>
-                </button></a
-              >
-              
+                </button></a>
 
-
-              
-
-              <button
-                (click)="confirmBox(element.slug)"
-                mat-menu-item
-                class="deleteBtn"
-              >
+              <button (click)="confirmBox(element.slug)" mat-menu-item class="deleteBtn">
                 <span class="material-symbols-outlined"> delete</span>
                 <span>Delete</span>
               </button>
@@ -83,15 +64,12 @@
       </div>
     </div>
     <div class="pagination-div">
-      <pagination-controls
-        (pageChange)="onPageChanged($event)"
-        [maxSize]="8"
-      ></pagination-controls>
+      <pagination-controls (pageChange)="onPageChanged($event)" [maxSize]="8"></pagination-controls>
     </div>
   </div>
   <!-- <h3 *ngIf="!instData?.institutes.data.length" class="no-Data-text">
     No data
   </h3> -->
-  <img *ngIf="!instData?.institutes.data.length"  class="no-Data-img" src="../../../../assets/img/no data/no-data-found.png" alt="">
-
+  <img *ngIf="!instData?.institutes.data.length" class="no-Data-img"
+    src="../../../../assets/img/no data/no-data-found.png" alt="" />
 </section>
